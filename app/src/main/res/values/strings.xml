@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AventurAPP</string>
+    <string name="NombreMoneda">Nombre Moneda</string>
+    <string name="InvertirValores">Invertir Valores</string>
+    <string name="Titulo">Conversor de Divisas</string>
+    <string name="Valor">0.00</string>
+</resources>

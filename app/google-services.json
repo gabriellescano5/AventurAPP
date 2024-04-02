@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "717506092198",
+    "project_id": "aventurappfirebase",
+    "storage_bucket": "aventurappfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:717506092198:android:930a3662325f28cf44a867",
+        "android_client_info": {
+          "package_name": "com.example.aventurapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA84F8RzXnsvPRHGBiRfgCZWBv6VSHcY64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
