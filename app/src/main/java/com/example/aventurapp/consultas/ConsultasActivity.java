@@ -1,33 +1,13 @@
-package com.example.aventurapp;
+package com.example.aventurapp.consultas;
 
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.view.View;
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.text.Editable;
-import android.util.Log;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
+import com.example.aventurapp.R;
+import com.example.aventurapp.divisas.DivisasActivity;
+import com.example.aventurapp.gastos.GastosActivity;
+import com.example.aventurapp.menu.MainActivity;
 
-import com.google.gson.annotations.SerializedName;
-
-import androidx.annotation.NonNull;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 

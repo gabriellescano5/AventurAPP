@@ -4,4 +4,37 @@
     <string name="InvertirValores">Invertir Valores</string>
     <string name="Titulo">Conversor de Divisas</string>
     <string name="Valor">0.00</string>
+    <string name="AgregarIngreso">AGREGAR INGRESO</string>
+    <string name="AgregarGasto">AGREGAR GASTO</string>
+    <string name="Guardar">Guardar</string>
+    <string name="Importe">IMPORTE</string>
+    <string name="Nota">NOTA</string>
+    <string name="Categoria">CATEGORÍA</string>
+    <string name="Gastos">GASTOS</string>
+    <string name="AnadeImporte">Añade un Importe</string>
+    <string name="AnadeCategoria">Añade una Categoría</string>
+    <string name="AnadeNota">Añade una Nota</string>
+    <string name="Ingresos">INGRESOS</string>
+    <string name="Aventurapp">AventurAPP</string>
+    <string name="ingresaTuCorreo">Ingresa tu correo</string>
+    <string name="ingresaTuClave">Ingresa tu contraseña</string>
+    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="registrate">Regístrate</string>
+    <string name="crearCuenta">Registrarme</string>
+    <string name="noCuenta">No tienes una cuenta? Regístrate</string>
+    <string name="siCuenta">Ya tienes una cuenta? Inicia sesión</string>
+    <string name="recuperarContrasena">Olvidé mi contraseña</string>
+    <string name="balance">BALANCE</string>
+    <string name="nuevaTransaccion">Nueva Transacción</string>
+    <string name="descripcion">DESCRIPCIÓN</string>
+    <string name="agregar">AGREGAR</string>
+    <string name="descripcionAqui">Su descripción aquí</string>
+    <string name="dos">200</string>
+    <string name="fecha">07 Abril 2024 20:07 </string>
+    <string name="ingresos">INGRESOS </string>
+    <string name="actualizar">ACTUALIZAR </string>
+    <string name="eliminar">ELIMINAR </string>
+
+
 </resources>

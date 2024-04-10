@@ -1,6 +1,4 @@
-package com.example.aventurapp;
-
-import static android.view.View.*;
+package com.example.aventurapp.divisas;
 
 import android.os.Bundle;
 import android.text.TextWatcher;
@@ -14,15 +12,16 @@ import android.widget.AdapterView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.aventurapp.consultas.ConsultasActivity;
+import com.example.aventurapp.R;
+import com.example.aventurapp.gastos.GastosActivity;
+import com.example.aventurapp.menu.MainActivity;
 import com.google.gson.annotations.SerializedName;
 
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -176,7 +175,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
             }
         });
-    }
+    } //------------------------------------ FIN ONCREATE
 
     public void ClickMenu(View view) {
         //abrir barra

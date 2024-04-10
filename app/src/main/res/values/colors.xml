@@ -9,5 +9,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="blue">#1e6091</color>
     <color name="green">#8db600</color>
+    <color name="colorDivider">#ECECEC</color>
+    <color name="red">#FF0000</color>
 
 </resources>

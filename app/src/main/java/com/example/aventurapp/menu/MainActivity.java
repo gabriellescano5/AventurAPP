@@ -1,56 +1,40 @@
-package com.example.aventurapp;
+package com.example.aventurapp.menu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.text.TextWatcher;
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.widget.Spinner;
-import android.widget.ImageButton;
-
-import com.google.gson.annotations.SerializedName;
-
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import android.widget.Toast;
-
-import retrofit2.http.GET;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
+import com.example.aventurapp.consultas.ConsultasActivity;
+import com.example.aventurapp.databinding.ActivityMainBinding;
+import com.example.aventurapp.divisas.DivisasActivity;
+import com.example.aventurapp.R;
+import com.example.aventurapp.gastos.GastosActivity;
+import com.example.aventurapp.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import android.text.Editable;
-import android.util.Log;
-import android.widget.AdapterView;
+
 
 import androidx.core.view.GravityCompat;
 
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
+public class MainActivity extends AppCompatActivity{
+
+    ActivityMainBinding binding;
 
     //Inicialización de variables
     DrawerLayout drawerLayout;
-
+    FirebaseFirestore firebaseFirestore;
+    static FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +44,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                if (firebaseAuth.getCurrentUser() == null) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        });
     }
 
     public void ClickMenu(View view) {
@@ -114,10 +110,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cerrarSesion(this);
 
     }
-
     public static void cerrarSesion(Activity activity) {
         //Inicialización alert dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Añadir título
         builder.setTitle("Cerrar Sesión");
         //añadir mensaje
@@ -126,22 +121,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //finalización de activity
-                activity.finish();
-                //salir de la aplicación
-                System.exit(0);
+                    firebaseAuth.signOut();
             }
         });
         //botón negativo - NO
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+                dialogInterface.cancel();
             }
         });
         //mostrar dialog
-        builder.show();
+        builder.create().show();
     }
+
 
     public static void redireccionarActivity(Activity activity, Class aClass) {
         //Inicialización Intent
@@ -157,26 +150,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onPause();
         //cerrar drawer
         cerrarBarra(drawerLayout);
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-    }
-
-    @Override
-    public void afterTextChanged(Editable editable) {
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 
     @Override

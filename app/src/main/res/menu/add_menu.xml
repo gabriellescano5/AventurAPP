@@ -4,6 +4,6 @@
     <item
         android:id="@+id/guardarGastos"
         android:icon="@drawable/check_image"
-        android:title="Guardar"
+        android:title="@string/Guardar"
         app:showAsAction="always" />
 </menu>

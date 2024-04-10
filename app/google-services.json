@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "717506092198",
-    "project_id": "aventurappfirebase",
-    "storage_bucket": "aventurappfirebase.appspot.com"
+    "project_number": "686205441510",
+    "project_id": "aventurapp-8c14d",
+    "storage_bucket": "aventurapp-8c14d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:717506092198:android:930a3662325f28cf44a867",
+        "mobilesdk_app_id": "1:686205441510:android:d5d43abfd3380e606eb227",
         "android_client_info": {
           "package_name": "com.example.aventurapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA84F8RzXnsvPRHGBiRfgCZWBv6VSHcY64"
+          "current_key": "AIzaSyBijpJOHW5izascE4EQOlwrAJ83psGm944"
         }
       ],
       "services": {
