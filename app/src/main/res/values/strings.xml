@@ -36,6 +36,11 @@
     <string name="actualizar">ACTUALIZAR </string>
     <string name="eliminar">ELIMINAR </string>
     <string name="aventuraFinanciera">Aventura Financiera </string>
+    <string name="origen">Origen </string>
+    <string name="destino">Destino</string>
+    <string name="paisOrigen">lugar de origen</string>
+    <string name="paisDestino">lugar de destino</string>
+    <string name="consultaVuelos">Consulta de Vuelos</string>
 
 
 </resources>
