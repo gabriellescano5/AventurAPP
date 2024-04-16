@@ -41,6 +41,14 @@
     <string name="paisOrigen">lugar de origen</string>
     <string name="paisDestino">lugar de destino</string>
     <string name="consultaVuelos">Consulta de Vuelos</string>
+    <string name="nomPaisOrigen">País Origen</string>
+    <string name="buscarVuelo">BUSCAR VUELO</string>
+    <string name="codigo">DESDE ID 1</string>
+    <string name="nomPaisDestino">País Destino</string>
+    <string name="fechaOrigen">Fecha Origen</string>
+    <string name="fechaDestino">Fecha Destino</string>
+    <string name="horarioOrigen">Horario Origen</string>
+    <string name="horarioDestino">Horario Destino</string>
 
 
 </resources>

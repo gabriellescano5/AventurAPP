@@ -109,7 +109,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
                             // Muestro en log toda la respuesta JSON
                             Log.d("API_RESPONSE", "(84)." + apiResponse.getData().toString());
 
-                            // Leno los arrays con los códigos "code" del JSON
+                            // Lleno los arrays con los códigos "code" del JSON
                             Set<String> codigosDivisa = apiResponse.getData().keySet();
                             ArrayList<String> listaCodigosDivisa = new ArrayList<>(codigosDivisa);
                             ArrayAdapter<String> adapter = new ArrayAdapter<>(DivisasActivity.this,
