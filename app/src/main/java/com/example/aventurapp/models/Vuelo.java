@@ -1,19 +1,29 @@
 package com.example.aventurapp.models;
 
 public class Vuelo {
-    private int id;
+    private String id;
     private String nomPaisOrigen;
-    private String nomPaisDestino ;
+    private String nomPaisDestino;
     private String fechaOrigen;
     private String horarioOrigen;
     private String fechaDestino;
-    private String  horarioDestino;
+    private String horarioDestino;
 
-    public int getId() {
+    public Vuelo(String id, String nomPaisOrigen, String nomPaisDestino, String fechaOrigen, String horarioOrigen, String fechaDestino, String horarioDestino) {
+        this.id = id;
+        this.nomPaisOrigen = nomPaisOrigen;
+        this.nomPaisDestino = nomPaisDestino;
+        this.fechaOrigen = fechaOrigen;
+        this.horarioOrigen = horarioOrigen;
+        this.fechaDestino = fechaDestino;
+        this.horarioDestino = horarioDestino;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -49,6 +49,8 @@
     <string name="fechaDestino">Fecha Destino</string>
     <string name="horarioOrigen">Horario Origen</string>
     <string name="horarioDestino">Horario Destino</string>
+    <string name="nroViaje">Código de Viaje</string>
+    <string name="ejemploCodigo">Ej. ARG00</string>
 
 
 </resources>

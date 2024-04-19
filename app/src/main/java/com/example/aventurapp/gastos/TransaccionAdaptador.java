@@ -15,7 +15,7 @@ import com.example.aventurapp.R;
 
 import java.util.ArrayList;
 
-public class TransaccionAdaptador extends RecyclerView.Adapter<TransaccionAdaptador.MiSoporteVista>{
+public class TransaccionAdaptador extends RecyclerView.Adapter<TransaccionAdaptador.MiSoporteVista> {
     Context context;
     ArrayList<TransaccionModelo> transaccionModeloArrayList;
 

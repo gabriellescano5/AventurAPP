@@ -39,82 +39,11 @@
             tools:layout_editor_absoluteX="5dp"
             tools:layout_editor_absoluteY="5dp">
 
-            <EditText
-                android:id="@+id/idVuelo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/codigo"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/btnBuscar"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_vuelos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#3F51B5"
-                android:text="@string/buscarVuelo"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-
-
-            <TextView
-                android:id="@+id/paisOrigen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/nomPaisOrigen"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/fechaOrigen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/fechaOrigen"
-                android:textSize="24sp" />
-            <TextView
-                android:id="@+id/horarioOrigen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/horarioOrigen"
-                android:textSize="24sp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/blue" />
-            <TextView
-                android:id="@+id/paisDestino"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/nomPaisDestino"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/fechaDestino"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/fechaDestino"
-                android:textSize="24sp" />
-            <TextView
-                android:id="@+id/horarioDestino"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/horarioDestino"
-                android:textSize="24sp" />
-
-
+                android:layout_height="match_parent" />
         </LinearLayout>
 
 

@@ -318,6 +318,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
             return data;
         }
     }
+
     public static class CurrencyData {
         // Para regresar código "code" y valor "value"
         private String code; //Ej. ARS
@@ -353,6 +354,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 // Representa la solicitud HTTP enviada al servidor
 // La respuesta se espera que sea un objeto de tipo ApiResponse
     }
+
     public String obtenerNombre(String code) {
 
         String nombre = null;

@@ -56,7 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegistroActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

@@ -36,6 +36,7 @@ public class GastosActivity extends AppCompatActivity {
 
     ArrayList<TransaccionModelo> transaccionModeloArrayList;
     TransaccionAdaptador transaccionAdaptador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

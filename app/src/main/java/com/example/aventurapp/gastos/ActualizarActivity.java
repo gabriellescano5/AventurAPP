@@ -26,6 +26,7 @@ public class ActualizarActivity extends AppCompatActivity {
 
     FirebaseFirestore firebaseFirestore;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +82,7 @@ public class ActualizarActivity extends AppCompatActivity {
 
                 firebaseFirestore.collection("GASTOS").document(firebaseAuth.getUid())
                         .collection("DESCRIPCION").document(id)
-                        .update("Descripcion", descripcion, "Importe", importe,"fecha",fechayhoraActual, "tipo", nuevoTipo)
+                        .update("Descripcion", descripcion, "Importe", importe, "fecha", fechayhoraActual, "tipo", nuevoTipo)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {

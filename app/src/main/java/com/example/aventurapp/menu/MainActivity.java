@@ -22,12 +22,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-
 import androidx.core.view.GravityCompat;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
 
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity{
         cerrarSesion(this);
 
     }
+
     public static void cerrarSesion(Activity activity) {
         //Inicialización alert dialog
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity{
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                    firebaseAuth.signOut();
+                firebaseAuth.signOut();
             }
         });
         //botón negativo - NO
