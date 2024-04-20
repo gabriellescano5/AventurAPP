@@ -27,6 +27,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         firebaseAuth = FirebaseAuth.getInstance();
 
+//        una vez que me registro me loguea automáticamente y me lleva a la pantalla menú
         binding.irPantallaLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,6 +41,7 @@ public class RegistroActivity extends AppCompatActivity {
             }
         });
 
+//        Me registro y puede que me cree el usuario o sea un usuario ya creado
         binding.btnregistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

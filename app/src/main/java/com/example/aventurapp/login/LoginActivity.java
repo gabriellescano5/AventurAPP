@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //
+        //Si tengo cuenta me logueo y me lleva a la actividad main que es la principal en el menú
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
