@@ -21,13 +21,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="20sp"
+            android:layout_margin="15sp"
             android:text="@string/consultaVuelos"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
         <ImageView
             android:src="@drawable/vuelo_png"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"/>
 
         <LinearLayout
