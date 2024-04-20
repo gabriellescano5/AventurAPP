@@ -13,9 +13,11 @@ import com.example.aventurapp.R;
 import com.example.aventurapp.models.Vuelo;
 
 
-
 import java.util.List;
 
+
+//Esta clase tendrá como función principal incorporar dentro del Recycler View el diseño y
+// componentes que contiene el archivo item_vuelo.xml
 public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> {
 
     private List<Vuelo> vuelos;
@@ -29,8 +31,8 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view= LayoutInflater.from(parent.getContext())
-               .inflate(R.layout.item_vuelo,parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_vuelo, parent, false);
 
         return new ViewHolder(view);
     }
@@ -51,6 +53,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
         return vuelos.size();
     }
 
+
+    //Esta clase especifica que componentes del archivo item_vuelo se utilizarán
+//    para mostrar datos del JSON
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView codigoVuelo;
         TextView PaisOrigen;
@@ -62,13 +67,13 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            codigoVuelo=itemView.findViewById(R.id.idVuelo);
-            PaisOrigen=itemView.findViewById(R.id.paisOrigen);
-            paisDestino=itemView.findViewById(R.id.paisDestino);
-            fechaOrigen=itemView.findViewById(R.id.fechaOrigen);
-            horarioOrigen=itemView.findViewById(R.id.horarioOrigen);
-            fechaDestino=itemView.findViewById(R.id.fechaDestino);
-            horarioDestino=itemView.findViewById(R.id.horarioDestino);
+            codigoVuelo = itemView.findViewById(R.id.idVuelo);
+            PaisOrigen = itemView.findViewById(R.id.paisOrigen);
+            paisDestino = itemView.findViewById(R.id.paisDestino);
+            fechaOrigen = itemView.findViewById(R.id.fechaOrigen);
+            horarioOrigen = itemView.findViewById(R.id.horarioOrigen);
+            fechaDestino = itemView.findViewById(R.id.fechaDestino);
+            horarioDestino = itemView.findViewById(R.id.horarioDestino);
         }
     }
 }

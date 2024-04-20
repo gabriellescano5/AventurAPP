@@ -47,7 +47,7 @@ public class ConsultasActivity extends AppCompatActivity {
 
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
-        recyclerView=findViewById(R.id.rv_vuelos);
+        recyclerView = findViewById(R.id.rv_vuelos);
         vueloList = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -55,14 +55,14 @@ public class ConsultasActivity extends AppCompatActivity {
 
     }
 
-    public void showVuelos(){
-        Call<List<Vuelo>> call= APIClient.getClient().create(APIVuelo.class).getVuelos();
+    public void showVuelos() {
+        Call<List<Vuelo>> call = APIClient.getClient().create(APIVuelo.class).getVuelos();
         call.enqueue(new Callback<List<Vuelo>>() {
             @Override
             public void onResponse(Call<List<Vuelo>> call, Response<List<Vuelo>> response) {
-                if (response.isSuccessful()){
-                    vueloList=response.body();
-                    vueloAdapter=new VueloAdapter(vueloList,getApplicationContext());
+                if (response.isSuccessful()) {
+                    vueloList = response.body();
+                    vueloAdapter = new VueloAdapter(vueloList, getApplicationContext());
                     recyclerView.setAdapter(vueloAdapter);
                 }
             }

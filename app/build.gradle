@@ -51,6 +51,7 @@ dependencies {
     androidTestImplementation libs.espresso.core
     implementation platform('com.google.firebase:firebase-bom:32.8.0')
     implementation 'com.google.firebase:firebase-analytics'
+
     //Librería Retrofit para obtener respuestas HTTP
     //----------------------------------------------------------
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
