@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aventurapp.R;
 import com.example.aventurapp.models.Vuelo;
 
-import org.w3c.dom.Text;
+
 
 import java.util.List;
 
@@ -39,9 +39,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.codigoVuelo.setText(vuelos.get(position).getId());
         holder.PaisOrigen.setText(vuelos.get(position).getNomPaisOrigen());
+        holder.paisDestino.setText(vuelos.get(position).getNomPaisDestino());
         holder.fechaOrigen.setText(vuelos.get(position).getFechaOrigen());
         holder.horarioOrigen.setText(vuelos.get(position).getHorarioOrigen());
-        holder.paisDestino.setText(vuelos.get(position).getNomPaisDestino());
         holder.fechaDestino.setText(vuelos.get(position).getFechaDestino());
         holder.horarioDestino.setText(vuelos.get(position).getHorarioDestino());
     }
@@ -54,9 +54,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView codigoVuelo;
         TextView PaisOrigen;
+        TextView paisDestino;
         TextView fechaOrigen;
         TextView horarioOrigen;
-        TextView paisDestino;
         TextView fechaDestino;
         TextView horarioDestino;
 
@@ -64,9 +64,9 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
             super(itemView);
             codigoVuelo=itemView.findViewById(R.id.idVuelo);
             PaisOrigen=itemView.findViewById(R.id.paisOrigen);
+            paisDestino=itemView.findViewById(R.id.paisDestino);
             fechaOrigen=itemView.findViewById(R.id.fechaOrigen);
             horarioOrigen=itemView.findViewById(R.id.horarioOrigen);
-            paisDestino=itemView.findViewById(R.id.paisDestino);
             fechaDestino=itemView.findViewById(R.id.fechaDestino);
             horarioDestino=itemView.findViewById(R.id.horarioDestino);
         }

@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,6 +48,7 @@ public class ConsultasActivity extends AppCompatActivity {
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
         recyclerView=findViewById(R.id.rv_vuelos);
+        vueloList = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         showVuelos();
@@ -67,7 +69,7 @@ public class ConsultasActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Vuelo>> call, Throwable t) {
-                Toast.makeText(ConsultasActivity.this, "ERROR DE CONEXIÓN", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ConsultasActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

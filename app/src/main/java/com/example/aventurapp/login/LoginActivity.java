@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
+
+    //Inicialización de variables
     ActivityLoginBinding binding;
     FirebaseAuth firebaseAuth;
 
@@ -25,7 +27,10 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        //Asignación a la variable
         firebaseAuth = FirebaseAuth.getInstance();
+
+        //Una vez que inicio sesión, mediante el intent me lleva a la pantalla principal del menú y finalizo el ciclo de la actividad de login
         firebaseAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -40,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        //Si no tengo cuenta para loguearme, me registro, mediante un intent desde login me lleva a la pantalla de registro
         binding.irPantallaRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,11 +73,13 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 try {
+                                    Toast.makeText(LoginActivity.this, "Bienvenido/a", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                                 } catch (Exception e) {
 
                                 }
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AventurAPP"
-
         tools:targetApi="31">
+
         <activity
             android:name=".gastos.AgregarTransaccionActivity"
             android:exported="false" />
