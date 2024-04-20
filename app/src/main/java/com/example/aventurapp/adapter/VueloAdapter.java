@@ -20,7 +20,10 @@ import java.util.List;
 // componentes que contiene el archivo item_vuelo.xml
 public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> {
 
+    //    Se encarga de guardar el listado de vuelos
     private List<Vuelo> vuelos;
+
+    //    permite acceder al contexto de ConsultasActivity que muestra el Recycler View
     private Context context;
 
     public VueloAdapter(List<Vuelo> vuelos, Context context) {
@@ -30,6 +33,7 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
 
     @NonNull
     @Override
+//    Este método se encargará de especificar el XML que se desea "inflar" en el Recycler View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_vuelo, parent, false);
@@ -38,6 +42,8 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
     }
 
     @Override
+//    Este método tiene la función de colocar en los componentes del item_vuelo.xml los datos
+//    que quiero mostrar del JSON
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.codigoVuelo.setText(vuelos.get(position).getId());
         holder.PaisOrigen.setText(vuelos.get(position).getNomPaisOrigen());
@@ -48,6 +54,8 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
         holder.horarioDestino.setText(vuelos.get(position).getHorarioDestino());
     }
 
+    //    Este método especifica la cantidad de items a devolver, para ello retorno la cantidad de
+//    elementos que hay en la lista
     @Override
     public int getItemCount() {
         return vuelos.size();
@@ -67,6 +75,8 @@ public class VueloAdapter extends RecyclerView.Adapter<VueloAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+//            Enlazo con los componentes que están en item_vuelo.xml
             codigoVuelo = itemView.findViewById(R.id.idVuelo);
             PaisOrigen = itemView.findViewById(R.id.paisOrigen);
             paisDestino = itemView.findViewById(R.id.paisDestino);
