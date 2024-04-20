@@ -31,8 +31,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConsultasActivity extends AppCompatActivity {
+    //    Para almacenar el listado de vuelos del JSON
     private List<Vuelo> vueloList;
+    //    para guardar los datos en recycler view
     private RecyclerView recyclerView;
+    //    para utilizar el adaptador
     private VueloAdapter vueloAdapter;
 
 
@@ -47,14 +50,21 @@ public class ConsultasActivity extends AppCompatActivity {
 
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+//        Enlazo el recycler view con el componente id del activity_consultas.xml
         recyclerView = findViewById(R.id.rv_vuelos);
+//        creo un objeto tipo lista
         vueloList = new ArrayList<>();
+//        Aquí alineo los elementos que se agregarán en el recycler view, en este caso
+//        en forma de lista
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        Aquí defino que el recycler view tendrá un tamaño fijo
         recyclerView.setHasFixedSize(true);
+//Los datos serán mostrados al abrir la aplicación
         showVuelos();
 
     }
 
+    // Este método es el encargado de ejecutar el llamado a la API
     public void showVuelos() {
         Call<List<Vuelo>> call = APIClient.getClient().create(APIVuelo.class).getVuelos();
         call.enqueue(new Callback<List<Vuelo>>() {
