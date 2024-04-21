@@ -124,6 +124,7 @@ public class GastosActivity extends AppCompatActivity {
                 });
     }
 
+    //        Método para refrescar los datos en GastosActivity
     public void ClickRefrescar(View view){
         finish();
         startActivity(getIntent());
