@@ -51,6 +51,11 @@
     <string name="horarioDestino">Horario Destino</string>
     <string name="nroViaje">Código de Viaje</string>
     <string name="ejemploCodigo">CÓDIGO ARG00</string>
+    <string name="bienvenido">BIENVENIDO/A!</string>
+    <string name="info">Espero que puedas llevar un buen control de tu economía</string>
+    <string name="info2">Y puedas disfrutar de la app. Saludos!</string>
+
+
 
 
 </resources>
