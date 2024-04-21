@@ -84,6 +84,11 @@ public class ConsultasActivity extends AppCompatActivity {
         });
     }
 
+    public void ClickRefrescar(View view){
+        finish();
+        startActivity(getIntent());
+    }
+
     public void ClickMenu(View view) {
         //abrir barra
         MainActivity.abrirBarra(drawerLayout);
@@ -103,6 +108,8 @@ public class ConsultasActivity extends AppCompatActivity {
         //Redirecciona activity al panel gastos
         MainActivity.redireccionarActivity(this, GastosActivity.class);
     }
+
+
 
     public void ClickDivisas(View view) {
 //Redirecciona activity al panel consultas

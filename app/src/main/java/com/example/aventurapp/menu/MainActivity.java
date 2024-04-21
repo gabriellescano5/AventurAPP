@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 
@@ -110,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void ClickRefrescar(View view){
+        recreate();
+    }
+
+
     public static void cerrarSesion(Activity activity) {
         //Inicialización alert dialog
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -151,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
         //cerrar drawer
         cerrarBarra(drawerLayout);
     }
+
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

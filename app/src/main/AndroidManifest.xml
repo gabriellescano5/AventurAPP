@@ -32,16 +32,20 @@
             android:noHistory="true"/>
         <activity
             android:name=".consultas.ConsultasActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".divisas.DivisasActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".gastos.GastosActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".menu.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

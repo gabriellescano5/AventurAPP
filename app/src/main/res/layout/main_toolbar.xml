@@ -23,6 +23,14 @@
         android:textColor="@color/blue"
         android:textSize="20sp"
         android:textStyle="bold" />
+    <ImageView
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="end"
+        android:onClick="ClickRefrescar"
+        android:src="@drawable/refresh_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"/>
 
 
 </LinearLayout>

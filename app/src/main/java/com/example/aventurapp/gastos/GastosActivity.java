@@ -74,8 +74,8 @@ public class GastosActivity extends AppCompatActivity {
             }
         });
 
-//        Método para refrescar los datos
-        binding.refrescarBtn.setOnClickListener(new View.OnClickListener() {
+//        Método para refrescar los datos en GastosActivity
+    /*    binding.refrescarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
@@ -85,7 +85,7 @@ public class GastosActivity extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
         cargarDato();
     }
 
@@ -122,6 +122,11 @@ public class GastosActivity extends AppCompatActivity {
                         binding.historialRecycler.setAdapter(transaccionAdaptador);
                     }
                 });
+    }
+
+    public void ClickRefrescar(View view){
+        finish();
+        startActivity(getIntent());
     }
 
     public void ClickMenu(View view) {
