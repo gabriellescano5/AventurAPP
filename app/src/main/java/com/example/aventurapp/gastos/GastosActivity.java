@@ -52,6 +52,8 @@ public class GastosActivity extends AppCompatActivity {
         binding.historialRecycler.setHasFixedSize(true);
 
         firebaseAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            // permite observar los cambios en el estado de autenticación del usuario, proporcionado por
+//            Firebase
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() == null) {
@@ -60,7 +62,7 @@ public class GastosActivity extends AppCompatActivity {
                 }
             }
         });
-
+// Método para agregar datos
         binding.btnFlotante.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +73,8 @@ public class GastosActivity extends AppCompatActivity {
                 }
             }
         });
+
+//        Método para refrescar los datos
         binding.refrescarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +89,7 @@ public class GastosActivity extends AppCompatActivity {
         cargarDato();
     }
 
+    //Agregar datos en documentos a Firebase Firestore, una base de datos NoSQL
     private void cargarDato() {
         firebaseFirestore.collection("GASTOS").document(firebaseAuth.getUid()).collection("DESCRIPCION")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

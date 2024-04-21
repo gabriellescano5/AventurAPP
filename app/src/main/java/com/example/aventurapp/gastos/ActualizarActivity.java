@@ -43,7 +43,8 @@ public class ActualizarActivity extends AppCompatActivity {
 
         binding.importeUsuario.setText(importe);
         binding.descripcionUsuario.setText(descripcion);
-
+//el switch va a indicar que es lo que se quiere actualizar
+//        Si el importe o el gasto, sería el checkbox
         switch (tipo) {
             case "Importe":
                 nuevoTipo = "Importe";
@@ -72,6 +73,8 @@ public class ActualizarActivity extends AppCompatActivity {
                 binding.gastosCheckbox.setChecked(true);
             }
         });
+
+//        aquí los demás datos que quiero actualizar (en caso de querer)
         binding.btnActualizarTransaccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +100,8 @@ public class ActualizarActivity extends AppCompatActivity {
                         });
             }
         });
+
+//        método para eliminar un dato
         binding.btnEliminarTransaccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

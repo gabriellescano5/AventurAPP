@@ -15,8 +15,14 @@ import com.example.aventurapp.R;
 
 import java.util.ArrayList;
 
+
+//Esta clase tendrá como función principal incorporar dentro del Recycler View el diseño y
+// componentes que contiene el archivo item_recycler.xml
 public class TransaccionAdaptador extends RecyclerView.Adapter<TransaccionAdaptador.MiSoporteVista> {
+    //    permite acceder al contexto de GastosActivity que muestra el Recycler View
     Context context;
+
+    //    Se encarga de guardar el listado de transacciones
     ArrayList<TransaccionModelo> transaccionModeloArrayList;
 
     public TransaccionAdaptador(Context context, ArrayList<TransaccionModelo> transaccionModeloArrayList) {
@@ -26,11 +32,14 @@ public class TransaccionAdaptador extends RecyclerView.Adapter<TransaccionAdapta
 
     @NonNull
     @Override
+    //    Este método se encargará de especificar el XML que se desea "inflar" en el Recycler View
     public MiSoporteVista onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
         return new MiSoporteVista(view);
     }
 
+    //    Este método tiene la función de colocar en los componentes del item_recycler.xml los datos
+//    que quiero mostrar del JSON
     @Override
     public void onBindViewHolder(@NonNull MiSoporteVista holder, @SuppressLint("RecyclerView") int position) {
         TransaccionModelo modelo = transaccionModeloArrayList.get(position);
@@ -58,10 +67,15 @@ public class TransaccionAdaptador extends RecyclerView.Adapter<TransaccionAdapta
         });
     }
 
+    //    Este método especifica la cantidad de items a devolver, para ello retorno la cantidad de
+//    elementos que hay en la lista
     @Override
     public int getItemCount() {
         return transaccionModeloArrayList.size();
     }
+
+    //Esta clase especifica que componentes del archivo item_recycler se utilizarán
+//    para mostrar datos del JSON
 
     public class MiSoporteVista extends RecyclerView.ViewHolder {
         TextView descripcion, importe, fecha;

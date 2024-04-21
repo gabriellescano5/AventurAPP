@@ -1,5 +1,8 @@
 package com.example.aventurapp.gastos;
 
+
+//Esta clase representa la estructura de datos de cada transacción.
+// Atributos, Constructor y setters & getters
 public class TransaccionModelo {
     private String id, descripcion, importe, tipo, fecha;
 

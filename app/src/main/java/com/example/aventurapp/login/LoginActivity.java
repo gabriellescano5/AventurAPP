@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //Asignación a la variable
+        //Asignación a la variable Firebase
         firebaseAuth = FirebaseAuth.getInstance();
 
         //Una vez que inicio sesión, mediante el intent me lleva a la pantalla principal del menú y finalizo el ciclo de la actividad de login

@@ -45,6 +45,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
+//        Voy a elegir el tipo de gasto o ingreso que quiero colocar
+//        Para gasto
         binding.gastosCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +55,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 binding.importeCheckbox.setChecked(false);
             }
         });
+//        para importe
         binding.importeCheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +65,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
             }
         });
 
-
+//aquí ejecutaría el método una vez ingresados los datos y se guardarían en Firestore
         binding.btnAgregarTransaccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
