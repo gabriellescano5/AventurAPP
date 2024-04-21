@@ -25,7 +25,9 @@
             android:exported="false" />
         <activity
             android:name=".login.RegistroActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"
+            />
         <activity
             android:name=".login.LoginActivity"
             android:exported="false"
@@ -33,10 +35,12 @@
         <activity
             android:name=".consultas.ConsultasActivity"
             android:exported="true"
+            android:noHistory="true"
             />
         <activity
             android:name=".divisas.DivisasActivity"
             android:exported="true"
+            android:noHistory="true"
             />
         <activity
             android:name=".gastos.GastosActivity"
@@ -45,6 +49,7 @@
         <activity
             android:name=".menu.MainActivity"
             android:exported="true"
+            android:noHistory="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
