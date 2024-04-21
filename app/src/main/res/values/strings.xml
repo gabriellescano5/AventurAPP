@@ -18,7 +18,7 @@
     <string name="Aventurapp">AventurAPP</string>
     <string name="ingresaTuCorreo">Ingresa tu correo</string>
     <string name="ingresaTuClave">Ingresa tu contraseña</string>
-    <string name="iniciarSesion">Iniciar Sesión</string>
+    <string name="iniciarSesion">inicia sesión para continuar</string>
     <string name="ingresar">Ingresar</string>
     <string name="registrate">Regístrate</string>
     <string name="crearCuenta">Registrarme</string>
@@ -55,6 +55,7 @@
     <string name="info">Espero que puedas llevar un buen control de tu economía</string>
     <string name="info2">Y puedas disfrutar de la app. Saludos!</string>
     <string name="marca">AventurAPP® - Aventura Financiera</string>
+    <string name="marca1">AventurAPP!</string>
 
 
 
