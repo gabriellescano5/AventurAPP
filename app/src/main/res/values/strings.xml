@@ -56,6 +56,9 @@
     <string name="info2">Y puedas disfrutar de la app. Saludos!</string>
     <string name="marca">AventurAPP® - Aventura Financiera</string>
     <string name="marca1">AventurAPP!</string>
+    <string name="ingresatuCorreoRecuperacion">Ingresa tu correo</string>
+    <string name="recuperaClave">Recupera tu contraseña</string>
+    <string name="recuperar">Recuperar</string>
 
 
 </resources>
