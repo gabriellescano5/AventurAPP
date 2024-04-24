@@ -11,7 +11,7 @@ Vídeos de muestra del lado del servidor como también del lado del cliente.
 
 DEMOSTRACIÓN (DISPOSITIVO Y PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[LINK](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9)
+PRUEBA EN CELULAR [LINK](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9)
 LINK
 
 
