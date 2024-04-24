@@ -7,7 +7,6 @@ Dicho proyecto pretende ser una aplicación móvil de gestión de gastos de viaj
 De igual modo, brinda la posibilidad de consultar los vuelos disponibles desde Argentina al exterior y también un conversor de divisas.
 AventurAPP, en su versión 1.0, fue realizada en el Entorno de Desarrollo Integrado (IDE) Android Studio en su versión Iguana 2023/2.1, con el lenguaje de programación Java y para versión mínima de Android 7.0 Nougat.
 
-Vídeos de muestra del lado del servidor como también del lado del cliente.
 
 DEMOSTRACIÓN (DISPOSITIVO Y PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -18,7 +17,7 @@ DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO Y MÁS LINK
 
 FUNCIONES
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-- Seguimiento de ingresos/gastos: Registre y clasifique los ingresos o gastos con facilidad.
+- Seguimiento de ingresos/gastos: Registroy clasificación de los ingresos o gastos con facilidad.
 - Conversor de divisas.
 - Consulta de vuelos.
 
