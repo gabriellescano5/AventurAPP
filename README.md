@@ -1,4 +1,4 @@
-#GESTIÓN DE GASTOS DE VIAJES
+**GESTIÓN DE GASTOS DE VIAJES**
 
 DESCRIPCIÓN
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -11,8 +11,8 @@ Vídeos de muestra del lado del servidor como también del lado del cliente.
 
 DEMOSTRACIÓN (DISPOSITIVO Y PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-PRUEBA EN CELULAR [LINK](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9)
-LINK
+DEMOSTRACIÓN APP EN CELULAR [LINK](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9) |
+DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO Y MÁS LINK
 
 
 
