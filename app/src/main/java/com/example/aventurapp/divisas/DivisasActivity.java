@@ -98,7 +98,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                 try {
-                    //Si hay éxito en la respuestas
+                    //Si hay éxito en las respuestas
                     if (response.isSuccessful()) {
                         Log.d("DebugGabriel", "(77) Respuesta exitosa");
 
