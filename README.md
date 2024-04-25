@@ -22,7 +22,11 @@ LINK PARA DESCARGAR API RESTful
 
 LINK PARA DESCARGAR DOCUMENTACIÓN E INFORMES DEL PROYECTO
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link)
+[Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link) (.rar)
+
+CUENTA FIREBASE Y SOMEE.COM
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1L179vQRq5oFjf38lDCeDjSZEYA50ftER/view?usp=drive_link) (.txt)
 
 FUNCIONES
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
