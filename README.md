@@ -17,9 +17,12 @@ DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO [YouTube](https://www.you
 
 LINK PARA DESCARGAR API RESTful
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[API RESTful AventurAPP](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
+[Google Drive](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
 
 
+LINK PARA DESCARGAR DOCUMENTACIÓN E INFORMES DEL PROYECTO
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link)
 
 FUNCIONES
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
