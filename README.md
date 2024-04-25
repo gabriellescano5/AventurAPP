@@ -28,6 +28,12 @@ CUENTA FIREBASE Y SOMEE.COM
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [Google Drive](https://drive.google.com/file/d/1L179vQRq5oFjf38lDCeDjSZEYA50ftER/view?usp=drive_link) (.txt)
 
+BD SQL SERVER
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1af-9oHK4yDf0N9mFN8jte9rQ2zfVGAnf/view?usp=drive_link) (Archivo sin comprimir)
+
+
+
 FUNCIONES
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - Seguimiento de ingresos/gastos: Registroy clasificación de los ingresos o gastos con facilidad.
