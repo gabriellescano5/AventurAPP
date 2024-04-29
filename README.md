@@ -20,7 +20,7 @@ LINK PARA DESCARGAR API RESTful
 [Google Drive](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
 
 
-LINK PARA DESCARGAR DOCUMENTACIÓN E INFORMES DEL PROYECTO
+LINK PARA DESCARGAR DOCUMENTACIÓN, REQUERIMIENTOS, DISEÑO BD E INTERFACES DEL PROYECTO
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 [Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link) (.rar)
 
