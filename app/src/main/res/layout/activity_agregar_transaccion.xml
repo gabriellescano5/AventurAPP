@@ -13,68 +13,150 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-
-        <EditText
-            android:id="@+id/importeUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/edit_text_bg"
-            android:hint="@string/Importe"
-            android:inputType="number"
-            android:padding="15dp" />
-
-        <EditText
-            android:id="@+id/descripcionUsuario"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/edit_text_bg"
-            android:gravity="start"
-            android:hint="@string/descripcion"
-            android:padding="15dp"
-            android:textAlignment="textStart" />
-
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:layout_height="wrap_content">
 
-            <CheckBox
-                android:id="@+id/gastos_checkbox"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/Gastos" />
+                android:orientation="vertical">
 
-            <CheckBox
-                android:id="@+id/importe_checkbox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/Ingresos" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/green">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_centerVertical="true"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="AÑADIR"
+                            android:textSize="20sp" />
+
+                    </RelativeLayout>
+                    <LinearLayout
+
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="150dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/yellowish"
+                            android:text="ingresa tu monto"
+                            android:textSize="16sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <LinearLayout
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:textStyle="bold"
+                                android:textSize="30sp"
+                                android:textColor="@color/white"
+                                android:text="ARS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <EditText
+                                android:layout_marginLeft="10dp"
+                                android:background="@android:color/transparent"
+                                android:layout_marginStart="10dp"
+                                android:textStyle="bold"
+                                android:textSize="30sp"
+                                android:inputType="number"
+                                android:id="@+id/importe"
+                                android:textColor="@color/white"
+                                android:hint="importe"
+                                android:layout_width="wrap_content"
+                                android:layout_height="48dp"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:padding="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/tipoPago"
+                    android:padding="10dp"
+                    android:hint="Efectivo o transferencia"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/stroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"/>
+                <EditText
+                    android:id="@+id/descripcion"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:hint="Descripción"
+                    android:background="@drawable/stroke"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"/>
+
+                <RadioGroup
+
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/ingresoRadio"
+                        android:text="Ingreso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <RadioButton
+                        android:checked="true"
+                        android:id="@+id/gastoRadio"
+                        android:text="Gasto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RadioGroup>
+
+
+            </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnAgregarTransaccion"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/agregar_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/purple"
+            app:cardCornerRadius="10dp"
+            android:background="@color/purple"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/agregar" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/agregar_texto"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:textColor="@color/white"
+                android:text="AGREGAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <RelativeLayout

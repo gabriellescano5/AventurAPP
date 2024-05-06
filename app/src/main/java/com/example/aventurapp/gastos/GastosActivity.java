@@ -1,10 +1,13 @@
 package com.example.aventurapp.gastos;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,20 +25,19 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GastosActivity extends AppCompatActivity {
     //Inicialización de variable
     DrawerLayout drawerLayout;
     ActivityGastosBinding binding;
 
-    FirebaseFirestore firebaseFirestore;
-    FirebaseAuth firebaseAuth;
+    GastoAdaptador gastoAdaptador;
+    GastoDB gastoDB;
+    GastosDAO gastoDAO;
 
-    int sumGastos = 0;
-    int sumImporte = 0;
+    long gasto = 0, ingreso=0;
 
-    ArrayList<TransaccionModelo> transaccionModeloArrayList;
-    TransaccionAdaptador transaccionAdaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,84 +47,16 @@ public class GastosActivity extends AppCompatActivity {
 
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        transaccionModeloArrayList = new ArrayList<>();
-        binding.historialRecycler.setLayoutManager(new LinearLayoutManager(this));
-        binding.historialRecycler.setHasFixedSize(true);
 
-        firebaseAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            // permite observar los cambios en el estado de autenticación del usuario, proporcionado por
-//            Firebase
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    startActivity(new Intent(GastosActivity.this, MainActivity.class));
-                    finish();
-                }
-            }
-        });
-// Método para agregar datos
-        binding.btnFlotante.setOnClickListener(new View.OnClickListener() {
+
+        binding.newBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    startActivity(new Intent(GastosActivity.this, AgregarTransaccionActivity.class));
-                } catch (Exception e) {
-
-                }
+                startActivity(new Intent(GastosActivity.this, AgregarTransaccionActivity.class));
             }
         });
-
-//        Método para refrescar los datos en GastosActivity
-    /*    binding.refrescarBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    startActivity(new Intent(GastosActivity.this, GastosActivity.class));
-                    finish();
-                } catch (Exception e) {
-
-                }
-            }
-        });*/
-        cargarDato();
     }
 
-    //Agregar datos en documentos a Firebase Firestore, una base de datos NoSQL
-    private void cargarDato() {
-        firebaseFirestore.collection("GASTOS").document(firebaseAuth.getUid()).collection("DESCRIPCION")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (DocumentSnapshot ds : task.getResult()) {
-                            TransaccionModelo modelo = new TransaccionModelo(
-                                    ds.getString("id"),
-                                    ds.getString("Descripcion"),
-                                    ds.getString("Importe"),
-                                    ds.getString("tipo"),
-                                    ds.getString("fecha"));
-                            int importe = Integer.parseInt(ds.getString("Importe"));
-                            if (ds.getString("tipo").equals("Gastos")) {
-                                sumGastos = sumGastos + importe;
-                            } else {
-                                sumImporte = sumImporte + importe;
-                            }
-                            transaccionModeloArrayList.add(modelo);
-
-                        }
-                        binding.totalIngreso.setText(String.valueOf(sumImporte));
-                        binding.totalGastos.setText(String.valueOf(sumGastos));
-                        binding.totalBalance.setText(String.valueOf(sumImporte - sumGastos));
-                        sumImporte = 0;
-                        sumGastos = 0;
-
-                        transaccionAdaptador = new TransaccionAdaptador(GastosActivity.this, transaccionModeloArrayList);
-
-                        binding.historialRecycler.setAdapter(transaccionAdaptador);
-                    }
-                });
-    }
 
     //        Método para refrescar los datos en GastosActivity
     public void ClickRefrescar(View view){
@@ -175,9 +109,65 @@ public class GastosActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        getData();
+
+        gastoDB=GastoDB.getInstance(this);
+        gastoDAO=gastoDB.getDao();
+        gastoAdaptador= new GastoAdaptador((Context) this, (ClickEvent) this);
+        binding.itemsRecycler.setAdapter(gastoAdaptador);
+        binding.itemsRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        gasto = 0;
+        ingreso = 0;
+
+        List<GastoTabla> expenseTables=gastoDAO.getAll();
+
+
+        for(int i=0;i<expenseTables.size();i++){
+            if(expenseTables.get(i).isIngreso()){
+                ingreso=ingreso+expenseTables.get(i).getImporte();
+            }else{
+                gasto=gasto+expenseTables.get(i).getImporte();
+            }
+            gastoAdaptador.agregar(expenseTables.get(i));
+        }
+        binding.totalGasto.setText(gasto+"");
+        binding.totalIngreso.setText(ingreso+"");
+        long balance=ingreso-gasto;
+        binding.totalImporte.setText(balance+"");
     }
 
-    private void getData() {
+    public void OnClick(int pos) {
+
+        Intent intent=new Intent(GastosActivity.this, AgregarTransaccionActivity.class);
+        intent.putExtra("update",true);
+        intent.putExtra("id",gastoAdaptador.getId(pos));
+        intent.putExtra("desc",gastoAdaptador.descripcion(pos));
+        intent.putExtra("tipopago",gastoAdaptador.tipoPago(pos));
+        intent.putExtra("importe",gastoAdaptador.importe(pos));
+        intent.putExtra("ingreso",gastoAdaptador.isIngreso(pos));
+
+        startActivity(intent);
     }
+
+    public void OnLongPress(int pos) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Eliminar")
+                .setMessage("¿Quieres eliminarlo?")
+                .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        int id= gastoAdaptador.getId(pos);
+                        gastoDAO.delete(id);
+                        gastoAdaptador.delete(pos);
+                    }
+                })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        builder.show();
+    }
+
 }

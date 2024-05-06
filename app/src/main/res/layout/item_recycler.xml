@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="4dp"
-    android:background="?selectableItemBackground">
-
-    <View
-        android:id="@+id/prioridad_uno"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="end"
-        android:layout_margin="10dp"
-        android:background="@drawable/green_shape" />
-
-    <RelativeLayout
+    app:contentPadding="10dp">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/nota_uno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLength="30"
-            android:maxLines="1"
-            android:text="@string/descripcionAqui" />
-
-        <TextView
-            android:id="@+id/importe_uno"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nota_uno"
-            android:text="@string/dos"
-            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:id="@+id/isImporte"
+            android:text="Ingreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
         <TextView
-            android:id="@+id/dato_uno"
+            android:textStyle="bold"
+            android:textColor="@color/teal_700"
+            android:textSize="20sp"
+            android:id="@+id/importe"
+            android:text="100"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/importe_uno"
-            android:text="@string/fecha"
-            android:textColor="@color/black" />
-    </RelativeLayout>
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:text="Title"
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="16sp"
+            android:text="Description"
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>

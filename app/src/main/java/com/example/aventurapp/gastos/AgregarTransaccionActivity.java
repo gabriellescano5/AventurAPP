@@ -31,78 +31,58 @@ import java.util.UUID;
 
 public class AgregarTransaccionActivity extends AppCompatActivity {
     ActivityAgregarTransaccionBinding binding;
-    FirebaseFirestore fStore;
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
-    String tipo = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAgregarTransaccionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        fStore = FirebaseFirestore.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
 
-//        Voy a elegir el tipo de gasto o ingreso que quiero colocar
-//        Para gasto
-        binding.gastosCheckbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tipo = "Gastos";
-                binding.gastosCheckbox.setChecked(true);
-                binding.importeCheckbox.setChecked(false);
+        boolean update = getIntent().getBooleanExtra("update", true);
+        Toast.makeText(this, ""+update, Toast.LENGTH_SHORT).show();
+        String desc = getIntent().getStringExtra("desc");
+        long importe = getIntent().getLongExtra("importe",-1);
+        int id = getIntent().getIntExtra("id",-1);
+        String tPago = getIntent().getStringExtra("tipopago");
+        boolean isImporte = getIntent().getBooleanExtra("isimporte", false);
+        if(update){
+            binding.agregarTexto.setText("ACTUALIZAR");
+            binding.importe.setText(importe+"");
+            binding.tipoPago.setText(tPago);
+            binding.descripcion.setText(desc);
+
+            if(isImporte){
+                binding.ingresoRadio.setChecked(true);
+            }else {
+                binding.gastoRadio.setChecked(true);
             }
-        });
-//        para importe
-        binding.importeCheckbox.setOnClickListener(new View.OnClickListener() {
+        }
+        binding.agregarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tipo = "Importe";
-                binding.gastosCheckbox.setChecked(false);
-                binding.importeCheckbox.setChecked(true);
-            }
-        });
+                String importe = binding.importe.getText().toString();
+                String tipo = binding.tipoPago.getText().toString();
+                String desc = binding.descripcion.getText().toString();
+                boolean isIngreso = binding.ingresoRadio.isChecked();
 
-//aquí ejecutaría el método una vez ingresados los datos y se guardarían en Firestore
-        binding.btnAgregarTransaccion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String importe = binding.importeUsuario.getText().toString().trim();
-                String descripcion = binding.descripcionUsuario.getText().toString().trim();
-                if (importe.length() <= 0) {
-                    return;
+                GastoTabla gastoTabla = new GastoTabla();
+
+                gastoTabla.setImporte(Long.parseLong(importe));
+                gastoTabla.setDescripcion(desc);
+                gastoTabla.setIngreso(isIngreso);
+                gastoTabla.setTipoPago(tipo);
+
+                GastoDB gastoDB = GastoDB.getInstance(view.getContext());
+                GastosDAO gastosDAO = gastoDB.getDao();
+
+                if(!update){
+                    gastosDAO.insertGasto(gastoTabla);
+                } else {
+                    gastoTabla.setId(id);
+                    gastosDAO.updateGasto(gastoTabla);
                 }
-                if (tipo.length() <= 0) {
-                    Toast.makeText(AgregarTransaccionActivity.this, "Tipo de transacción seleccionada", Toast.LENGTH_SHORT).show();
-                }
-                SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy_HH:mm", Locale.getDefault());
-                String fechayhoraActual = sdf.format(new Date());
-
-                String id = UUID.randomUUID().toString();
-                Map<String, Object> transaccion = new HashMap<>();
-                transaccion.put("id", id);
-                transaccion.put("Importe", importe);
-                transaccion.put("Descripcion", descripcion);
-                transaccion.put("tipo", tipo);
-                transaccion.put("fecha", fechayhoraActual);
-
-                fStore.collection("GASTOS").document(firebaseAuth.getUid()).collection("DESCRIPCION").document(id)
-                        .set(transaccion)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(AgregarTransaccionActivity.this, "Dato Agregado", Toast.LENGTH_SHORT).show();
-                                binding.descripcionUsuario.setText("");
-                                binding.importeUsuario.setText("");
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AgregarTransaccionActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                finish();
             }
         });
     }
