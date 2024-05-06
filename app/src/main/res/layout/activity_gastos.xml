@@ -210,11 +210,11 @@
                 </RelativeLayout>
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="255dp">
+                    android:layout_height="280dp">
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/itemsRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
                     </androidx.recyclerview.widget.RecyclerView>
                 </androidx.core.widget.NestedScrollView>
 
@@ -224,10 +224,10 @@
             android:layout_gravity="end"
             android:id="@+id/new_btn"
             android:backgroundTint="@color/btn_color"
-            android:layout_margin="16dp"
-            android:layout_width="70dp"
+            android:layout_margin="15dp"
+            android:layout_width="55dp"
             app:cardCornerRadius="35dp"
-            android:layout_height="70dp">
+            android:layout_height="55dp">
             <ImageView
                 android:layout_gravity="center"
                 android:src="@drawable/add_icon"
