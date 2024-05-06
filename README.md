@@ -40,13 +40,13 @@ LINK API RESTful AventurAPP
 
 FUNCIONES
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-- Seguimiento de ingresos/gastos: Registroy clasificación de los ingresos o gastos con facilidad.
+- Seguimiento de ingresos/gastos: Registro y clasificación de los ingresos o gastos con facilidad.
 - Conversor de divisas.
 - Consulta de vuelos.
 
 TECNOLOGÍAS UTILIZADAS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - Frontend: XML
-- Backend: JAVA, SQL SERVER, FIREBASE, RETROFIT
+- Backend: JAVA, SQL SERVER, FIREBASE, ROOM DATABASE, RETROFIT
 
 
