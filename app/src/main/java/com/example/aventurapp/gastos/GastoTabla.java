@@ -1,11 +1,11 @@
 package com.example.aventurapp.gastos;
 
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "gasto")
 public class GastoTabla {
+
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String tipoPago;

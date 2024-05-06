@@ -16,15 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHolder> {
-    private Context context;
-    private ClickEvent clickEvent;
-    private List<GastoTabla> gastoTablaList;
+
+   private Context context;
+
+   private ClickEvent clickEvent;
+
+   private List<GastoTabla> gastoTablaList;
 
     public GastoAdaptador(Context context, ClickEvent clickEvent) {
         this.context = context;
         gastoTablaList=new ArrayList<>();
         this.clickEvent = clickEvent;
     }
+
     public void agregar(GastoTabla gastoTabla){
         gastoTablaList.add(gastoTabla);
         notifyDataSetChanged();
@@ -43,6 +47,25 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
     holder.titulo.setText(gastoTabla.getTipoPago());
     holder.importe.setText(String.valueOf(gastoTabla.getImporte()));
     holder.descripcion.setText(gastoTabla.getDescripcion());
+
+    if(gastoTabla.isIngreso()){
+        holder.estado.setText("Ingreso");
+    }else {
+        holder.estado.setText("Gasto");
+    }
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            clickEvent.OnClick(position);
+        }
+    });
+    holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View view) {
+            clickEvent.OnLongPress(position);
+            return true;
+        }
+    });
     }
 
     @Override
@@ -50,32 +73,31 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
         return gastoTablaList.size();
     }
 
-    public int getId(int pos){
-        return gastoTablaList.get(pos).getId();
-
-    }
-    public boolean isIngreso(int pos){
-        return gastoTablaList.get(pos).isIngreso();
-    }
-    public String tipoPago(int pos){
-        return gastoTablaList.get(pos).getTipoPago();
-    }
-
-    public long importe(int pos){
-        return gastoTablaList.get(pos).getImporte();
-    }
-    public String descripcion(int pos){
-        return gastoTablaList.get(pos).getDescripcion();
-    }
-
-    public void delete(int pos){
+    public void eliminar(int pos){
         gastoTablaList.remove(pos);
         notifyDataSetChanged();
     }
+    public int getId(int pos){
+        return gastoTablaList.get(pos).getId();
+    }
+
+    public boolean isIngreso(int pos){
+        return gastoTablaList.get(pos).isIngreso();
+    }
+
+    public String tipoPago(int pos){
+        return gastoTablaList.get(pos).getTipoPago();
+    }
+    public long importe(int pos){
+        return gastoTablaList.get(pos).getImporte();
+    }
+
+    public String desc(int pos){
+        return gastoTablaList.get(pos).getDescripcion();
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
-       TextView estado,titulo,descripcion,importe;
+        TextView estado,titulo,descripcion,importe;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             estado=itemView.findViewById(R.id.isImporte);

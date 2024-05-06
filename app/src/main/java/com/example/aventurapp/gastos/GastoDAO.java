@@ -9,16 +9,16 @@ import androidx.room.Update;
 import java.util.List;
 
 @Dao
-public interface GastosDAO {
-        @Insert
+public interface GastoDAO {
+    @Insert
     void insertGasto(GastoTabla gastoTabla);
-        @Update
+
+    @Update
     void updateGasto(GastoTabla gastoTabla);
 
     @Query("DELETE FROM gasto where id=:id")
-    void delete(int id);
+    abstract void delete(int id);
 
-    @Query("select * from gasto")
+    @Query("SELECT * FROM gasto")
     List<GastoTabla> getAll();
-
 }

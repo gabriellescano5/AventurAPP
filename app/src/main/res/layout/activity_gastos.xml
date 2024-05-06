@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:paddingBottom="30dp">
+                    android:paddingBottom="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -68,7 +68,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
                     android:orientation="horizontal"
                     android:padding="10dp"
                     android:weightSum="2">
@@ -76,7 +75,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="70dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_weight="1"
                         app:cardCornerRadius="15dp">
 
@@ -94,7 +93,6 @@
                                 app:cardCornerRadius="10dp">
 
                                 <ImageView
-
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
@@ -105,7 +103,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_toRightOf="@+id/img_card"
+                                android:layout_toEndOf="@+id/img_card"
                                 android:orientation="vertical">
 
                                 <TextView
@@ -133,7 +131,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
                         android:layout_height="70dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         app:cardCornerRadius="15dp">
 
@@ -161,7 +159,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_toRightOf="@+id/img_card1"
+                                android:layout_toEndOf="@+id/img_card1"
                                 android:orientation="vertical">
 
                                 <TextView
@@ -209,20 +207,17 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        app:cardCornerRadius="20dp"
-                        android:backgroundTint="@color/purple">
-                    </androidx.cardview.widget.CardView>
-
                 </RelativeLayout>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/itemsRecycler"
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="255dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/itemsRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.core.widget.NestedScrollView>
+
             </LinearLayout>
         </LinearLayout>
         <androidx.cardview.widget.CardView
@@ -230,8 +225,6 @@
             android:id="@+id/new_btn"
             android:backgroundTint="@color/btn_color"
             android:layout_margin="16dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
             android:layout_width="70dp"
             app:cardCornerRadius="35dp"
             android:layout_height="70dp">

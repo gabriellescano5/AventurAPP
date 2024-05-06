@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -17,26 +17,21 @@ import com.example.aventurapp.consultas.ConsultasActivity;
 import com.example.aventurapp.databinding.ActivityGastosBinding;
 import com.example.aventurapp.divisas.DivisasActivity;
 import com.example.aventurapp.menu.MainActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class GastosActivity extends AppCompatActivity {
+public class GastosActivity extends AppCompatActivity implements ClickEvent {
     //Inicialización de variable
     DrawerLayout drawerLayout;
     ActivityGastosBinding binding;
 
     GastoAdaptador gastoAdaptador;
-    GastoDB gastoDB;
-    GastosDAO gastoDAO;
 
-    long gasto = 0, ingreso=0;
+    GastoDB gastoDB;
+
+    GastoDAO gastoDAO;
+
+    long gasto=0, ingreso=0;
 
 
     @Override
@@ -48,7 +43,6 @@ public class GastosActivity extends AppCompatActivity {
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
 
-
         binding.newBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +51,33 @@ public class GastosActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gastoDB=GastoDB.getInstance(this);
+        gastoDAO=gastoDB.getDao();
+        gastoAdaptador=new GastoAdaptador(this,this);
+        binding.itemsRecycler.setAdapter(gastoAdaptador);
+        binding.itemsRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        ingreso=0;
+        gasto=0;
+
+        List<GastoTabla> gastoTablas=gastoDAO.getAll();
+
+        for(int i=0;i<gastoTablas.size();i++){
+            if(gastoTablas.get(i).isIngreso()){
+                ingreso=ingreso+gastoTablas.get(i).getImporte();
+            } else {
+                gasto=gasto+gastoTablas.get(i).getImporte();
+            }
+            gastoAdaptador.agregar(gastoTablas.get(i));
+        }
+        binding.totalGasto.setText(gasto+"");
+        binding.totalIngreso.setText(ingreso+"");
+        long balance=ingreso-gasto;
+        binding.totalImporte.setText(balance+"");
+    }
 
     //        Método para refrescar los datos en GastosActivity
     public void ClickRefrescar(View view){
@@ -107,67 +128,38 @@ public class GastosActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-        gastoDB=GastoDB.getInstance(this);
-        gastoDAO=gastoDB.getDao();
-        gastoAdaptador= new GastoAdaptador((Context) this, (ClickEvent) this);
-        binding.itemsRecycler.setAdapter(gastoAdaptador);
-        binding.itemsRecycler.setLayoutManager(new LinearLayoutManager(this));
-
-        gasto = 0;
-        ingreso = 0;
-
-        List<GastoTabla> expenseTables=gastoDAO.getAll();
-
-
-        for(int i=0;i<expenseTables.size();i++){
-            if(expenseTables.get(i).isIngreso()){
-                ingreso=ingreso+expenseTables.get(i).getImporte();
-            }else{
-                gasto=gasto+expenseTables.get(i).getImporte();
-            }
-            gastoAdaptador.agregar(expenseTables.get(i));
-        }
-        binding.totalGasto.setText(gasto+"");
-        binding.totalIngreso.setText(ingreso+"");
-        long balance=ingreso-gasto;
-        binding.totalImporte.setText(balance+"");
-    }
-
     public void OnClick(int pos) {
-
         Intent intent=new Intent(GastosActivity.this, AgregarTransaccionActivity.class);
         intent.putExtra("update",true);
         intent.putExtra("id",gastoAdaptador.getId(pos));
-        intent.putExtra("desc",gastoAdaptador.descripcion(pos));
+        intent.putExtra("desc",gastoAdaptador.desc(pos));
         intent.putExtra("tipopago",gastoAdaptador.tipoPago(pos));
         intent.putExtra("importe",gastoAdaptador.importe(pos));
-        intent.putExtra("ingreso",gastoAdaptador.isIngreso(pos));
+        intent.putExtra("isingreso",gastoAdaptador.isIngreso(pos));
 
         startActivity(intent);
+
     }
 
+    @Override
     public void OnLongPress(int pos) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
-        builder.setTitle("Eliminar")
-                .setMessage("¿Quieres eliminarlo?")
-                .setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        int id= gastoAdaptador.getId(pos);
-                        gastoDAO.delete(id);
-                        gastoAdaptador.delete(pos);
-                    }
-                })
-                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
-        builder.show();
+    AlertDialog.Builder builder= new AlertDialog.Builder(this);
+    builder.setTitle("Eliminar")
+            .setMessage("Estás seguro/a de eliminar?")
+            .setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    int id= gastoAdaptador.getId(pos);
+                    gastoDAO.delete(id);
+                    gastoAdaptador.eliminar(pos);
+                }
+            })
+            .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+    builder.show();
     }
-
 }
