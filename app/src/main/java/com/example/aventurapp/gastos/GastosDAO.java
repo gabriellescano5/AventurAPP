@@ -16,7 +16,7 @@ public interface GastosDAO {
     void updateGasto(GastoTabla gastoTabla);
 
     @Query("DELETE FROM gasto where id=:id")
-    abstract void delete(int id);
+    void delete(int id);
 
     @Query("select * from gasto")
     List<GastoTabla> getAll();
