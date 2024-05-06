@@ -59,6 +59,19 @@
     <string name="ingresatuCorreoRecuperacion">Ingresa tu correo</string>
     <string name="recuperaClave">Recupera tu contraseña</string>
     <string name="recuperar">Recuperar</string>
+    <string name="SALDO">SALDO</string>
+    <string name="VALOR">1000</string>
+    <string name="VALOR1">3500</string>
+    <string name="transaccionesRecientes">Transacciones Recientes</string>
+    <string name="peso">$</string>
+    <string name="ANADIR">AÑADIR</string>
+    <string name="ARS">ARS</string>
+    <string name="ingresatumonto">ingresa tu monto</string>
+    <string name="efectivotransferencia">EFECTIVO O TRANSFERENCIA</string>
+    <string name="ingreso">Ingreso</string>
+    <string name="gasto">Gasto</string>
+    <string name="AGREGAR">AGREGAR</string>
+
 
 
 </resources>

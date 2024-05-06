@@ -32,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="SALDO"
+                    android:text="@string/SALDO"
                     android:textAlignment="center"
                     android:textSize="18sp" />
 
@@ -47,7 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="$"
+                        android:text="@string/peso"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="30sp"
@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="10000"
+                        android:text="@string/VALOR"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="30sp"
@@ -110,7 +110,7 @@
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Ingresos"
+                                    android:text="@string/Ingresos"
                                     android:textColor="@color/white"
                                     android:textSize="18sp" />
 
@@ -118,7 +118,7 @@
                                     android:id="@+id/total_ingreso"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="3500"
+                                    android:text="@string/VALOR1"
                                     android:textColor="@color/white"
                                     android:textSize="22sp"
                                     android:textStyle="bold" />
@@ -163,10 +163,10 @@
                                 android:orientation="vertical">
 
                                 <TextView
-
+                                    android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Gastos"
+                                    android:text="@string/Gastos"
                                     android:textColor="@color/white"
                                     android:textSize="18sp" />
 
@@ -174,7 +174,7 @@
                                     android:id="@+id/total_gasto"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="3500"
+                                    android:text="@string/VALOR1"
                                     android:textColor="@color/white"
                                     android:textSize="22sp"
                                     android:textStyle="bold" />
@@ -202,7 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="Transacciones recientes"
+                        android:text="@string/transaccionesRecientes"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
