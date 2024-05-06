@@ -8,9 +8,8 @@ De igual modo, brinda la posibilidad de consultar los vuelos disponibles desde A
 AventurAPP, en su versión 1.0, fue realizada en el Entorno de Desarrollo Integrado (IDE) Android Studio en su versión Iguana 2023/2.1, con el lenguaje de programación Java y para versión mínima de Android 7.0 Nougat.
 
 
-DEMOSTRACIÓN (DISPOSITIVO Y PC).
+DEMOSTRACIÓN (PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-DEMOSTRACIÓN APP EN CELULAR [YouTube](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9) |
 DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO [YouTube](https://www.youtube.com/watch?v=AgtBHKTW_64)
 
 
