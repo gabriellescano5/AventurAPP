@@ -1,4 +1,4 @@
-**GESTIÓN DE GASTOS DE VIAJES**
+***APLICACIÓN GESTIÓN DE GASTOS DE VIAJES***
 
 DESCRIPCIÓN
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -10,9 +10,32 @@ AventurAPP, en su versión 1.0, fue realizada en el Entorno de Desarrollo Integr
 
 DEMOSTRACIÓN (DISPOSITIVO Y PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-DEMOSTRACIÓN APP EN CELULAR [LINK](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9) |
-DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO Y MÁS LINK
+DEMOSTRACIÓN APP EN CELULAR [YouTube](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9) |
+DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO [YouTube](https://www.youtube.com/watch?v=AgtBHKTW_64)
 
+
+
+LINK PARA DESCARGAR CÓDIGO API RESTful en ASP.NET CORE
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
+
+
+LINK PARA DESCARGAR DOCUMENTACIÓN, REQUERIMIENTOS, DISEÑO BD E INTERFACES DEL PROYECTO
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link) (.rar)
+
+CUENTA FIREBASE Y SOMEE.COM
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1L179vQRq5oFjf38lDCeDjSZEYA50ftER/view?usp=drive_link) (.txt)
+
+BD SQL SERVER
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Google Drive](https://drive.google.com/file/d/1af-9oHK4yDf0N9mFN8jte9rQ2zfVGAnf/view?usp=drive_link) (Archivo sin comprimir)
+
+
+LINK API RESTful AventurAPP
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[API RESTful](https://www.aventurapp2024.somee.com/swagger/index.html)
 
 
 FUNCIONES
