@@ -110,7 +110,7 @@
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/Ingresos"
+                                    android:text="@string/ingreso"
                                     android:textColor="@color/white"
                                     android:textSize="18sp" />
 
@@ -166,7 +166,7 @@
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/Gastos"
+                                    android:text="@string/gasto"
                                     android:textColor="@color/white"
                                     android:textSize="18sp" />
 
