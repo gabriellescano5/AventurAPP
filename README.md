@@ -8,9 +8,8 @@ De igual modo, brinda la posibilidad de consultar los vuelos disponibles desde A
 AventurAPP, en su versión 1.0, fue realizada en el Entorno de Desarrollo Integrado (IDE) Android Studio en su versión Iguana 2023/2.1, con el lenguaje de programación Java y para versión mínima de Android 7.0 Nougat.
 
 
-DEMOSTRACIÓN (DISPOSITIVO Y PC).
+DEMOSTRACIÓN (PC).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-DEMOSTRACIÓN APP EN CELULAR [YouTube](https://youtu.be/9qHIhiKv7Js?si=tIQTNge_SDuKLjA9) |
 DEMOSTRACIÓN API RESTful DESARROLLADA, ANDROID STUDIO [YouTube](https://www.youtube.com/watch?v=AgtBHKTW_64)
 
 
@@ -20,9 +19,9 @@ LINK PARA DESCARGAR CÓDIGO API RESTful en ASP.NET CORE
 [Google Drive](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
 
 
-LINK PARA DESCARGAR DOCUMENTACIÓN, REQUERIMIENTOS, DISEÑO BD E INTERFACES DEL PROYECTO
+LINK PARA DESCARGAR REQUERIMIENTOS
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[Google Drive](https://drive.google.com/file/d/1Xrj3WMCHKoxzg6SBEkEtbCm14LDrc2Pl/view?usp=drive_link) (.rar)
+[Google Drive](https://drive.google.com/file/d/1hvdI16lJbywd4u5h8YhcPl7o1C9NI--W/view) (PDF)
 
 CUENTA FIREBASE Y SOMEE.COM
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
