@@ -203,8 +203,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
     public void ClickDivisas(View view) {
         //recrea actividad
-
-
+        recreate();
     }
 
     public void ClickConsultas(View view) {
