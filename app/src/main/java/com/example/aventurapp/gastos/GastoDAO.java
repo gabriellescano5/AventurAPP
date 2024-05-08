@@ -8,6 +8,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+//Interface con los métodos en Room para aplicar
 @Dao
 public interface GastoDAO {
     @Insert

@@ -15,6 +15,8 @@ import com.example.aventurapp.R;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//Adaptador para mostrar los datos en el Recycler View
 public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHolder> {
 
    private Context context;

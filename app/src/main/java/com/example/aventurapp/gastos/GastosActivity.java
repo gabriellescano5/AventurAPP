@@ -43,6 +43,8 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
 
+
+        //Función para agregar un nuevo gasto/ingreso
         binding.newBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +53,8 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         });
     }
 
+
+//    Función para hacer los cálculos al ingresar un gasto o ingreso y que muestre el balance
     @Override
     protected void onResume() {
         super.onResume();
@@ -127,6 +131,8 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         MainActivity.cerrarBarra(drawerLayout);
     }
 
+
+//    Función para actualizar al presionar el dato
     @Override
     public void OnClick(int pos) {
         Intent intent=new Intent(GastosActivity.this, AgregarTransaccionActivity.class);
@@ -141,6 +147,8 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
 
     }
 
+
+//    Función para presión prolongada para eliminar un dato
     @Override
     public void OnLongPress(int pos) {
     AlertDialog.Builder builder= new AlertDialog.Builder(this);

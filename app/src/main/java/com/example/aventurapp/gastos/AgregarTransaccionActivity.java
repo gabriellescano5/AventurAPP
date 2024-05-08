@@ -20,6 +20,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         binding = ActivityAgregarTransaccionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+// Para actualizar un dato
         boolean update = getIntent().getBooleanExtra("update",false);
         Toast.makeText(this, ""+update, Toast.LENGTH_SHORT).show();
         String desc= getIntent().getStringExtra("desc");
@@ -28,6 +30,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         String tpago= getIntent().getStringExtra("tipopago");
         boolean isIngreso = getIntent().getBooleanExtra("isingreso",false);
 
+        //Para verificar si el usuario pretende hacer un update, entonces el botón lo cambia a update y habilita
+//        el checkbox
         if(update){
             binding.agregarTexto.setText("ACTUALIZAR");
             binding.importe.setText(importe+"");
@@ -41,6 +45,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
             }
 
         }
+
+//        Función para ingresar un gasto / ingreso
         binding.agregarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

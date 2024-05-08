@@ -3,6 +3,10 @@ package com.example.aventurapp.gastos;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+
+
+//Clase Gasto con sus atributos, constructores, setters y getters y con el nombre de tabla definida y su
+//clave primaria
 @Entity(tableName = "gasto")
 public class GastoTabla {
 
