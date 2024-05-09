@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.window.OnBackInvokedDispatcher;
 
 
 import androidx.annotation.NonNull;
@@ -106,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
     public void ClickLogout(View view) {
         //Cerrar aplicación
         cerrarSesion(this);
-
     }
 
     public void ClickRefrescar(View view){
@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
         //cerrar drawer
         cerrarBarra(drawerLayout);
     }
-
 
 
     @Override

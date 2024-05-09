@@ -23,31 +23,23 @@
             android:name=".gastos.AgregarTransaccionActivity"
             android:exported="false" />
         <activity
-            android:name=".gastos.ActualizarActivity"
-            android:exported="false" />
-        <activity
             android:name=".login.RegistroActivity"
-            android:exported="false"
-            android:noHistory="true" />
+            android:exported="false"/>
         <activity
             android:name=".login.LoginActivity"
-            android:exported="false"
-            android:noHistory="true" />
+            android:exported="false"/>
         <activity
             android:name=".consultas.ConsultasActivity"
-            android:exported="true"
-            android:noHistory="true" />
+            android:exported="true" />
         <activity
             android:name=".divisas.DivisasActivity"
-            android:exported="true"
-            android:noHistory="true" />
+            android:exported="true"/>
         <activity
             android:name=".gastos.GastosActivity"
             android:exported="true" />
         <activity
             android:name=".menu.MainActivity"
-            android:exported="true"
-            android:noHistory="true">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
