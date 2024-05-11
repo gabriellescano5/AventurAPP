@@ -72,6 +72,10 @@
     <string name="gasto">Gasto</string>
     <string name="AGREGAR">AGREGAR</string>
     <string name="TITULO">Título</string>
+    <string name="guardarUbicacion">GUARDAR MI UBICACIÓN</string>
+    <string name="puntos">..................</string>
+    <string name="Latitud">Latitud:</string>
+    <string name="Longitud">Longitud:</string>
 
 
 

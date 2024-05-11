@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
     public void ClickLogout(View view) {
         //Cerrar aplicación
         cerrarSesion(this);
+        finish();
     }
 
     public void ClickRefrescar(View view){

@@ -214,6 +214,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     public void ClickLogout(View view) {
         //Cerrar app
         MainActivity.cerrarSesion(this);
+        finish();
     }
 
     @Override

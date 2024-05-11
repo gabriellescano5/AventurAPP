@@ -122,8 +122,8 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
     public void ClickLogout(View view) {
         //Cerrar app
         MainActivity.cerrarSesion(this);
+        finish();
     }
-
     @Override
     protected void onPause() {
         super.onPause();

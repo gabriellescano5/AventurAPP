@@ -1,5 +1,7 @@
 package com.example.aventurapp.gastos;
 
+import android.widget.EditText;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
