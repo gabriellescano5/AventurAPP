@@ -2,8 +2,11 @@ package com.example.aventurapp.gastos;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -14,9 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.example.aventurapp.R;
 import com.example.aventurapp.databinding.ActivityAgregarTransaccionBinding;
 import com.example.aventurapp.menu.MainActivity;
@@ -27,16 +32,16 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.util.Objects;
+
 
 public class AgregarTransaccionActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 1;
-    EditText lat, lon, dir;
-    FusedLocationProviderClient fusedLocationProviderClient;
+    EditText lat, lon;
+
     ActivityAgregarTransaccionBinding binding;
 
-
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,25 +49,25 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 // Para actualizar un dato
-        boolean update = getIntent().getBooleanExtra("update",false);
-        Toast.makeText(this, ""+update, Toast.LENGTH_SHORT).show();
-        String desc= getIntent().getStringExtra("desc");
-        long importe=getIntent().getLongExtra("importe",-1);
-        int id = getIntent().getIntExtra("id",-1);
-        String tpago= getIntent().getStringExtra("tipopago");
-        boolean isIngreso = getIntent().getBooleanExtra("isingreso",false);
+        boolean update = getIntent().getBooleanExtra("update", false);
+        Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
+        String desc = getIntent().getStringExtra("desc");
+        long importe = getIntent().getLongExtra("importe", -1);
+        int id = getIntent().getIntExtra("id", -1);
+        String tpago = getIntent().getStringExtra("tipopago");
+        boolean isIngreso = getIntent().getBooleanExtra("isingreso", false);
 
         //Para verificar si el usuario pretende hacer un update, entonces el botón lo cambia a update y habilita
 //        el checkbox
-        if(update){
+        if (update) {
             binding.agregarTexto.setText("ACTUALIZAR");
-            binding.importe.setText(importe+"");
+            binding.importe.setText(importe + "");
             binding.tipoPago.setText(tpago);
             binding.descripcion.setText(desc);
 
-            if(isIngreso){
+            if (isIngreso) {
                 binding.ingresoRadio.setChecked(true);
-            }else {
+            } else {
                 binding.gastoRadio.setChecked(true);
             }
 
@@ -87,7 +92,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 GastoDB gastoDB = GastoDB.getInstance(view.getContext());
                 GastoDAO gastoDAO = gastoDB.getDao();
 
-                if(!update){
+                if (!update) {
                     gastoDAO.insertGasto(gastoTabla);
                 } else {
                     gastoTabla.setId(id);
@@ -96,7 +101,5 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }
