@@ -16,16 +16,20 @@ public class GastoTabla {
     private long importe;
     private String descripcion;
     private boolean ingreso;
+    private double latitud;
+    private double longitud;
 
     public GastoTabla() {
     }
 
-    public GastoTabla(int id, String tipoPago, long importe, String descripcion, boolean ingreso) {
+    public GastoTabla(int id, String tipoPago, long importe, String descripcion, boolean ingreso, double latitud, double longitud) {
         this.id = id;
         this.tipoPago = tipoPago;
         this.importe = importe;
         this.descripcion = descripcion;
         this.ingreso = ingreso;
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public int getId() {
@@ -66,5 +70,21 @@ public class GastoTabla {
 
     public void setIngreso(boolean ingreso) {
         this.ingreso = ingreso;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 }

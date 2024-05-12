@@ -49,6 +49,9 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
     holder.titulo.setText(gastoTabla.getTipoPago());
     holder.importe.setText(String.valueOf(gastoTabla.getImporte()));
     holder.descripcion.setText(gastoTabla.getDescripcion());
+    holder.latitud.setText(String.valueOf(gastoTabla.getLatitud()));
+    holder.longitud.setText(String.valueOf(gastoTabla.getLongitud()));
+
 
     if(gastoTabla.isIngreso()){
         holder.estado.setText("Ingreso");
@@ -99,13 +102,15 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView estado,titulo,descripcion,importe;
+        TextView estado,titulo,descripcion,importe, latitud, longitud;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             estado=itemView.findViewById(R.id.isImporte);
             titulo=itemView.findViewById(R.id.titulo);
             descripcion=itemView.findViewById(R.id.descripcion);
             importe=itemView.findViewById(R.id.importe);
+            latitud=itemView.findViewById(R.id.latitud);
+            longitud=itemView.findViewById(R.id.longitud);
         }
     }
 }

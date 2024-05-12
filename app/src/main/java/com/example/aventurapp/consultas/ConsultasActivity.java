@@ -1,5 +1,6 @@
 package com.example.aventurapp.consultas;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -74,6 +75,7 @@ public class ConsultasActivity extends AppCompatActivity {
                     vueloList = response.body();
                     vueloAdapter = new VueloAdapter(vueloList, getApplicationContext());
                     recyclerView.setAdapter(vueloAdapter);
+
                 }
             }
 

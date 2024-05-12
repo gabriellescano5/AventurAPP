@@ -38,9 +38,11 @@ import java.util.Objects;
 public class AgregarTransaccionActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 1;
-    EditText lat, lon;
 
     ActivityAgregarTransaccionBinding binding;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private double latitudActual;
+    private double longitudActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,28 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         binding = ActivityAgregarTransaccionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-// Para actualizar un dato
+        //Inicializando el cliente de ubicación
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        //Verifica los permisos y obtiene la última ubicación conocida
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // En algunos casos raros, la ubicación puede ser nula
+                            if(location != null){
+                                latitudActual = location.getLatitude();
+                                longitudActual = location.getLongitude();
+                            }
+                        }
+                    });
+        } else {
+            //Solicita los permisos si aún no están concedidos
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        }
+
+            // Para actualizar un dato
         boolean update = getIntent().getBooleanExtra("update", false);
         Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
         String desc = getIntent().getStringExtra("desc");
@@ -58,7 +81,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         boolean isIngreso = getIntent().getBooleanExtra("isingreso", false);
 
         //Para verificar si el usuario pretende hacer un update, entonces el botón lo cambia a update y habilita
-//        el checkbox
+        // el checkbox
         if (update) {
             binding.agregarTexto.setText("ACTUALIZAR");
             binding.importe.setText(importe + "");
@@ -73,7 +96,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
 
         }
 
-//        Función para ingresar un gasto / ingreso
+//        Función para ingresar un gasto / ingreso y la ubicación.
         binding.agregarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,24 +105,36 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 String desc = binding.descripcion.getText().toString();
                 boolean isIngreso = binding.ingresoRadio.isChecked();
 
-                GastoTabla gastoTabla = new GastoTabla();
+                //Me aseguro de que la latitud y la longitud no sean 0.00, lo que podría indicar que
+                //  la ubicación no se ha obtenido correctamente
+                if (latitudActual != 0.00 && longitudActual != 0.00) {
 
-                gastoTabla.setImporte(Long.parseLong(importe));
-                gastoTabla.setDescripcion(desc);
-                gastoTabla.setIngreso(isIngreso);
-                gastoTabla.setTipoPago(tipo);
 
-                GastoDB gastoDB = GastoDB.getInstance(view.getContext());
-                GastoDAO gastoDAO = gastoDB.getDao();
+                    GastoTabla gastoTabla = new GastoTabla();
 
-                if (!update) {
-                    gastoDAO.insertGasto(gastoTabla);
+                    gastoTabla.setImporte(Long.parseLong(importe));
+                    gastoTabla.setDescripcion(desc);
+                    gastoTabla.setIngreso(isIngreso);
+                    gastoTabla.setTipoPago(tipo);
+                    gastoTabla.setLatitud((latitudActual));
+                    gastoTabla.setLongitud(longitudActual);
+
+                    GastoDB gastoDB = GastoDB.getInstance(view.getContext());
+                    GastoDAO gastoDAO = gastoDB.getDao();
+
+                    if (!update) {
+                        gastoDAO.insertGasto(gastoTabla);
+                    } else {
+                        gastoTabla.setId(id);
+                        gastoDAO.updateGasto(gastoTabla);
+                    }
+                    finish();
                 } else {
-                    gastoTabla.setId(id);
-                    gastoDAO.updateGasto(gastoTabla);
+                    // Maneja el caso en que la ubicación no esté disponible
+                    Toast.makeText(AgregarTransaccionActivity.this, "Ubicación no disponible, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
                 }
-                finish();
             }
         });
     }
+
 }
