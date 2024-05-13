@@ -39,7 +39,7 @@ public class ConsultasActivity extends AppCompatActivity {
     //    para utilizar el adaptador
     private VueloAdapter vueloAdapter;
 
-
+    private ProgressDialog progressDialog;
     //Inicialización de variables
     DrawerLayout drawerLayout;
 
@@ -60,6 +60,11 @@ public class ConsultasActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        Aquí defino que el recycler view tendrá un tamaño fijo
         recyclerView.setHasFixedSize(true);
+
+//        Inicializo ProgressDialog
+        progressDialog = new ProgressDialog(ConsultasActivity.this);
+        progressDialog.setMessage("Cargando datos, por favor espere");
+        progressDialog.setCancelable(false);
 //Los datos serán mostrados al abrir la aplicación
         showVuelos();
 
@@ -67,10 +72,13 @@ public class ConsultasActivity extends AppCompatActivity {
 
     // Este método es el encargado de ejecutar el llamado a la API
     public void showVuelos() {
+        progressDialog.show();
         Call<List<Vuelo>> call = APIClient.getClient().create(APIVuelo.class).getVuelos();
         call.enqueue(new Callback<List<Vuelo>>() {
             @Override
             public void onResponse(Call<List<Vuelo>> call, Response<List<Vuelo>> response) {
+//                Cierro el ProgressDialog al recibir la respuesta
+                progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     vueloList = response.body();
                     vueloAdapter = new VueloAdapter(vueloList, getApplicationContext());
@@ -81,6 +89,8 @@ public class ConsultasActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Vuelo>> call, Throwable t) {
+//                Cierro el ProgressDialog si hay un fallo en la llamada a la API
+                progressDialog.dismiss();
                 Toast.makeText(ConsultasActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
