@@ -3,6 +3,7 @@ package com.example.aventurapp.gastos;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -39,7 +40,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         super.onCreate(savedInstanceState);
         binding = ActivityGastosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -122,7 +123,6 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
     public void ClickLogout(View view) {
         //Cerrar app
         MainActivity.cerrarSesion(this);
-        finish();
     }
     @Override
     protected void onPause() {

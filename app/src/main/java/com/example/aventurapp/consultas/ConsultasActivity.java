@@ -1,6 +1,7 @@
 package com.example.aventurapp.consultas;
 
 import android.app.ProgressDialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -48,7 +49,7 @@ public class ConsultasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consultas);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
 //        Enlazo el recycler view con el componente id del activity_consultas.xml
@@ -137,7 +138,6 @@ public class ConsultasActivity extends AppCompatActivity {
     public void ClickLogout(View view) {
         //Cerrar app
         MainActivity.cerrarSesion(this);
-        finish();
     }
 
     @Override

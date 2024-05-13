@@ -3,6 +3,7 @@ package com.example.aventurapp.gastos;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -49,7 +50,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAgregarTransaccionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         //Inicializando el cliente de ubicación
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 

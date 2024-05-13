@@ -1,6 +1,7 @@
 package com.example.aventurapp.divisas;
 
 import android.app.ProgressDialog;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
@@ -59,7 +60,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_divisas);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -230,7 +231,6 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     public void ClickLogout(View view) {
         //Cerrar app
         MainActivity.cerrarSesion(this);
-        finish();
     }
 
     @Override

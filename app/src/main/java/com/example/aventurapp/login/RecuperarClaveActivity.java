@@ -1,6 +1,7 @@
 package com.example.aventurapp.login;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -28,7 +29,7 @@ public class RecuperarClaveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_clave);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         recuperarClave= findViewById(R.id.btnRecuperacion);
         correo= findViewById(R.id.emailLogin);
 

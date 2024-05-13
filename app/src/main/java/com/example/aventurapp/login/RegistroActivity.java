@@ -1,6 +1,7 @@
 package com.example.aventurapp.login;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityRegistroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         firebaseAuth = FirebaseAuth.getInstance();
 
 //        una vez que me registro me loguea automáticamente y me lleva a la pantalla menú
