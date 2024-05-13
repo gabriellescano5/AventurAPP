@@ -127,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 //                Cierre de sesión con Firebase
                 firebaseAuth.signOut();
+
+                Intent intent = new Intent(activity, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                activity.startActivity(intent);
             }
 
         });
@@ -150,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //Iniciar activity
         activity.startActivity(intent);
+        //Cerrar la actividad actual
+        activity.finish();
+
     }
 
     @Override
