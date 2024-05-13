@@ -49,14 +49,6 @@ public class RecuperarClaveActivity extends AppCompatActivity {
         sendEmail(email);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = new Intent(RecuperarClaveActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void sendEmail(String email){
         FirebaseAuth auth= FirebaseAuth.getInstance();
         String emailAddress= email;
