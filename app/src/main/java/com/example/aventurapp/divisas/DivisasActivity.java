@@ -56,6 +56,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
     ProgressDialog progressDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,8 +230,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void ClickLogout(View view) {
-        //Cerrar app
-        MainActivity.cerrarSesion(this);
+            MainActivity.cerrarSesion(this);
     }
 
     @Override

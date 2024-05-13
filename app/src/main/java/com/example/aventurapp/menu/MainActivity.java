@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     FirebaseFirestore firebaseFirestore;
     static FirebaseAuth firebaseAuth;
+    static boolean b = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,15 +107,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickLogout(View view) {
-        //Cerrar aplicación
-        cerrarSesion(this);
-
+            cerrarSesion(this);
     }
 
     public void ClickRefrescar(View view){
         recreate();
     }
-
 
     public static void cerrarSesion(Activity activity) {
         //Inicialización alert dialog
@@ -127,8 +125,10 @@ public class MainActivity extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+//                Cierre de sesión con Firebase
                 firebaseAuth.signOut();
             }
+
         });
         //botón negativo - NO
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         //mostrar dialog
         builder.create().show();
     }
+
 
 
     public static void redireccionarActivity(Activity activity, Class aClass) {

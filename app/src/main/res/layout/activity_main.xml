@@ -25,16 +25,16 @@
         <TextView
             android:layout_marginTop="10dp"
             android:padding="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/info"
             android:textSize="20sp"/>
         <TextView
             android:padding="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/info2"
             android:textSize="20sp" />
         <ImageView

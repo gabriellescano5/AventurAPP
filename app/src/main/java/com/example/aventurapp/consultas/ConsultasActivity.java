@@ -136,8 +136,7 @@ public class ConsultasActivity extends AppCompatActivity {
     }
 
     public void ClickLogout(View view) {
-        //Cerrar app
-        MainActivity.cerrarSesion(this);
+            MainActivity.cerrarSesion(this);
     }
 
     @Override
