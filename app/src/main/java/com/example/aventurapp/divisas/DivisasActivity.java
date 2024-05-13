@@ -1,5 +1,6 @@
 package com.example.aventurapp.divisas;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
@@ -52,6 +53,8 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     ApiService apiService; //interfaz
     ApiResponse apiResponse; // clase
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +75,11 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
         btn = findViewById(R.id.btn);
         btn.setOnClickListener(this);
 
+//        Inicializo ProgressDialog
+        progressDialog = new ProgressDialog(DivisasActivity.this);
+        progressDialog.setMessage("Cargando datos, por favor espere");
+        progressDialog.setCancelable(false);
+
         //Adaptador de la interfaz Java a llamados HTTP
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -84,6 +92,10 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
         // Creando interfaz con el adaptador
         apiService = retrofit.create(ApiService.class);
+
+//        Muestro el ProgressDialog antes de la llamada a la API
+        progressDialog.show();
+
 
         // Invocación de un método Retrofit que envía una petición a un servidor web y envía una respuesta
         // Cada llamada produce su propia respuesta HTTP
@@ -99,6 +111,8 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
             public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                 try {
                     //Si hay éxito en las respuestas
+//                    Y cierro el ProgressDialog al recibir la respuesta
+                    progressDialog.dismiss();
                     if (response.isSuccessful()) {
                         Log.d("DebugGabriel", "(77) Respuesta exitosa");
 
@@ -143,6 +157,8 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+//                Cierro el ProgressDialog si hay un fallo en la llamada a la API
+                progressDialog.dismiss();
                 Toast.makeText(DivisasActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
                 Log.e("ERRORG", "(123) Error de red durante la llamada a la API: " + t.getMessage());
             }

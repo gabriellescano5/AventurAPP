@@ -72,6 +72,7 @@ public class ConsultasActivity extends AppCompatActivity {
 
     // Este método es el encargado de ejecutar el llamado a la API
     public void showVuelos() {
+//        Muestro el ProgressDialog antes de la llamada a la API
         progressDialog.show();
         Call<List<Vuelo>> call = APIClient.getClient().create(APIVuelo.class).getVuelos();
         call.enqueue(new Callback<List<Vuelo>>() {
