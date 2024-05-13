@@ -44,6 +44,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private double latitudActual;
     private double longitudActual;
+    private LocationCallback locationCallback;
+    private LocationRequest locationRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,23 +56,28 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         //Inicializando el cliente de ubicación
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        //Verifica los permisos y obtiene la última ubicación conocida
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            fusedLocationProviderClient.getLastLocation()
-                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            // En algunos casos raros, la ubicación puede ser nula
-                            if(location != null){
-                                latitudActual = location.getLatitude();
-                                longitudActual = location.getLongitude();
-                            }
-                        }
-                    });
-        } else {
-            //Solicita los permisos si aún no están concedidos
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-        }
+       locationRequest = LocationRequest.create();
+       locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+       locationRequest.setInterval(10000); // 10 segundos de intervalo
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+               if(locationResult == null){
+                   return;
+               }
+               for (Location location : locationResult.getLocations()){
+                   if(location != null){
+                       latitudActual = location.getLatitude();
+                       longitudActual = location.getLongitude();
+//                       Detiene la actualización de la ubicación si ya no es necesaria
+                       fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+                   }
+               }
+            }
+        };
+//        Verifico los permisos y comienzo a solicitar actualizaciones de ubicación
+        startLocationUpdates();
 
             // Para actualizar un dato
         boolean update = getIntent().getBooleanExtra("update", false);
@@ -132,10 +139,24 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                     finish();
                 } else {
                     // Maneja el caso en que la ubicación no esté disponible
-                    Toast.makeText(AgregarTransaccionActivity.this, "Ubicación no disponible, vuelve a intentarlo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AgregarTransaccionActivity.this, "Ubicación no disponible, puedes salir y volver a intentarlo", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
+    private void startLocationUpdates() {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        Detiene la actualización de la ubicación cuando la Activity no está visible
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+    }
 }
