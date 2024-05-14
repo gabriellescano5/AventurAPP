@@ -161,7 +161,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
             public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
 //                Cierro el ProgressDialog si hay un fallo en la llamada a la API
                 progressDialog.dismiss();
-                Toast.makeText(DivisasActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DivisasActivity.this, "Error de red, puede salir y volver a intentarlo", Toast.LENGTH_SHORT).show();
                 Log.e("ERRORG", "(123) Error de red durante la llamada a la API: " + t.getMessage());
             }
         });
