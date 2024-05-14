@@ -64,7 +64,7 @@ public class ConsultasActivity extends AppCompatActivity {
 
 //        Inicializo ProgressDialog
         progressDialog = new ProgressDialog(ConsultasActivity.this);
-        progressDialog.setMessage("Cargando datos, por favor espere");
+        progressDialog.setMessage("Recuperando datos, por favor espere");
         progressDialog.setCancelable(false);
 //Los datos serán mostrados al abrir la aplicación
         showVuelos();

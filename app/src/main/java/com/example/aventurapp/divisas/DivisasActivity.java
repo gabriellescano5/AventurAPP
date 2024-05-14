@@ -79,7 +79,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
 
 //        Inicializo ProgressDialog
         progressDialog = new ProgressDialog(DivisasActivity.this);
-        progressDialog.setMessage("Cargando datos, por favor espere");
+        progressDialog.setMessage("Recuperando datos, por favor espere");
         progressDialog.setCancelable(false);
 
         //Adaptador de la interfaz Java a llamados HTTP
