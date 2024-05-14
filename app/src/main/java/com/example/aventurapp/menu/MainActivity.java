@@ -7,20 +7,20 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.window.OnBackInvokedDispatcher;
+
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aventurapp.consultas.ConsultasActivity;
-import com.example.aventurapp.databinding.ActivityMainBinding;
+
 import com.example.aventurapp.divisas.DivisasActivity;
 import com.example.aventurapp.R;
 import com.example.aventurapp.gastos.GastosActivity;
 import com.example.aventurapp.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 
 import androidx.core.view.GravityCompat;
@@ -29,13 +29,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
 
     //Inicialización de variables
     DrawerLayout drawerLayout;
-    FirebaseFirestore firebaseFirestore;
+
     static FirebaseAuth firebaseAuth;
-    static boolean b = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
