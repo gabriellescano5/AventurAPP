@@ -11,10 +11,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aventurapp.databinding.ActivityLoginBinding;
 import com.example.aventurapp.menu.MainActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -67,28 +74,40 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.emailLogin.getText().toString().trim();
                 String contrasena = binding.contrasenaLogin.getText().toString().trim();
-                if (email.length() <= 0 || contrasena.length() <= 0) {
+
+                //                Verifico si los campos están vacíos
+                if(email.isEmpty() || contrasena.isEmpty()){
+                    Toast.makeText(LoginActivity.this, "Los campos no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//                Verifico que el correo tenga el formato correcto de correo electrónico
+                if(!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+                    Toast.makeText(LoginActivity.this, "El formato del correo no es válido", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 firebaseAuth.signInWithEmailAndPassword(email, contrasena)
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
-                            public void onSuccess(AuthResult authResult) {
-                                try {
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+//                                Inicio de sesión exitoso
                                     Toast.makeText(LoginActivity.this, "Bienvenido/a", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-                                } catch (Exception e) {
-
+                                } else {
+//                                    Manejo de errores de inicio de sesión
+                                    try {
+                                        throw Objects.requireNonNull(task.getException());
+                                    } catch (FirebaseAuthInvalidUserException e){
+                                        Toast.makeText(LoginActivity.this, "El correo electrónico no existe", Toast.LENGTH_SHORT).show();
+                                    } catch (FirebaseAuthInvalidCredentialsException e){
+                                        Toast.makeText(LoginActivity.this, "La contraseña es incorrecta", Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e){
+                                        Toast.makeText(LoginActivity.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(LoginActivity.this, "Datos inválidos", Toast.LENGTH_SHORT).show();
                             }
                         });
+
             }
         });
         binding.recuperarClave.setOnClickListener(new View.OnClickListener() {
