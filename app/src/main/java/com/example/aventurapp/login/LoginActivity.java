@@ -98,8 +98,10 @@ public class LoginActivity extends AppCompatActivity {
                                     try {
                                         throw Objects.requireNonNull(task.getException());
                                     } catch (FirebaseAuthInvalidUserException e){
+
                                         Toast.makeText(LoginActivity.this, "El correo electrónico no existe", Toast.LENGTH_SHORT).show();
                                     } catch (FirebaseAuthInvalidCredentialsException e){
+
                                         Toast.makeText(LoginActivity.this, "La contraseña es incorrecta", Toast.LENGTH_SHORT).show();
                                     } catch (Exception e){
                                         Toast.makeText(LoginActivity.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
