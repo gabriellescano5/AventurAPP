@@ -19,9 +19,11 @@ LINK PARA DESCARGAR CÓDIGO API RESTful en ASP.NET CORE
 [Google Drive](https://drive.google.com/file/d/1uPotqQUio4c5ayhu9N_1RseeNxjiSf7B/view?usp=drive_link)  (Visual Studio 2022)
 
 
-LINK PARA DESCARGAR REQUERIMIENTOS
+LINK PARA DESCARGAR REQUERIMIENTOS | DISEÑO BD E INTERFACES | DOCUMENTACIÓN FINAL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-[Google Drive](https://drive.google.com/file/d/1hvdI16lJbywd4u5h8YhcPl7o1C9NI--W/view) (PDF)
+- [Google Drive](https://drive.google.com/file/d/1cIJIEPnMHEB5j_J_v9gIIhwIir6Wp5Tl/view?usp=drive_link) (REQUERIMIENTOS Y CASO DE USO)
+- [Google Drive](https://drive.google.com/file/d/1dBMfMlgn7Vh4iZ99Xqe6oC0MkkG5kD7j/view?usp=drive_link) (DISEÑO BD E INTERFACES)
+- [Google Drive](https://drive.google.com/file/d/1wp-IVKF-Nbo0hbshpZTZ3G0x92LnpcPB/view?usp=drive_link) (DOCUMENTACIÓN FINAL)
 
 CUENTA FIREBASE Y SOMEE.COM
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
