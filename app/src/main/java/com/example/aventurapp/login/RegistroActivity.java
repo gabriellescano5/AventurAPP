@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class RegistroActivity extends AppCompatActivity {
     ActivityRegistroBinding binding;
@@ -49,18 +52,35 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.emailregistro.getText().toString();
                 String contrasena = binding.contrasenaregistro.getText().toString();
-                if (email.trim().length() <= 0 || contrasena.trim().length() <= 0) {
+                if (email.isEmpty() || contrasena.isEmpty()) {
+                    Toast.makeText(RegistroActivity.this, "Los campos no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                //                Verifico que el correo tenga el formato correcto de correo electrónico
+                if(!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+                    Toast.makeText(RegistroActivity.this, "El formato del correo no es válido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(contrasena.length() < 6){
+                    Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 firebaseAuth.createUserWithEmailAndPassword(email, contrasena).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(RegistroActivity.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "Usuario creado exitosamente", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegistroActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
+                        if (e instanceof FirebaseAuthUserCollisionException){
+                            Toast.makeText(RegistroActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
+
+                        }  else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(RegistroActivity.this, "Las credenciales son inválidas", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegistroActivity.this, "Error al registrar el usuario" +e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
             }
