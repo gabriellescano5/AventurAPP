@@ -108,36 +108,42 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                     Toast.makeText(AgregarTransaccionActivity.this, "por favor, ingresa el importe", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                GastoTabla gastoTabla = new GastoTabla();
 
+                gastoTabla.setImporte(Long.parseLong(importe));
+                gastoTabla.setDescripcion(desc);
+                gastoTabla.setIngreso(isIngreso);
+                gastoTabla.setTipoPago(tipo);
 
-                //Me aseguro de que la latitud y la longitud no sean 0.00, lo que podría indicar que
-                //  la ubicación no se ha obtenido correctamente
-                if (latitudActual != 0.00 && longitudActual != 0.00) {
+                if(ActivityCompat.checkSelfPermission(AgregarTransaccionActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+//                    Si no hay permiso, establece valores predeterminados
+                    gastoTabla.setLatitud(-1);
+                    gastoTabla.setLongitud(-1);
 
-
-                    GastoTabla gastoTabla = new GastoTabla();
-
-                    gastoTabla.setImporte(Long.parseLong(importe));
-                    gastoTabla.setDescripcion(desc);
-                    gastoTabla.setIngreso(isIngreso);
-                    gastoTabla.setTipoPago(tipo);
-                    gastoTabla.setLatitud((latitudActual));
-                    gastoTabla.setLongitud(longitudActual);
-
-                    GastoDB gastoDB = GastoDB.getInstance(view.getContext());
-                    GastoDAO gastoDAO = gastoDB.getDao();
-
-                    if (!update) {
-                        gastoDAO.insertGasto(gastoTabla);
-                    } else {
-                        gastoTabla.setId(id);
-                        gastoDAO.updateGasto(gastoTabla);
-                    }
-                    finish();
                 } else {
-                    // Maneja el caso en que la ubicación no esté disponible
-                    Toast.makeText(AgregarTransaccionActivity.this, "Ubicación no disponible, puedes salir y volver a intentarlo", Toast.LENGTH_SHORT).show();
+                    //Me aseguro de que la latitud y la longitud no sean 0.00, lo que podría indicar que
+                    //  la ubicación no se ha obtenido correctamente
+                    if (latitudActual != 0.00 && longitudActual != 0.00) {
+                        gastoTabla.setLatitud((latitudActual));
+                        gastoTabla.setLongitud(longitudActual);
+
+                    } else {
+                        Toast.makeText(AgregarTransaccionActivity.this, "Error al obtener la ubicación", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+
+                GastoDB gastoDB = GastoDB.getInstance(view.getContext());
+                GastoDAO gastoDAO = gastoDB.getDao();
+
+                if (!update) {
+                    gastoDAO.insertGasto(gastoTabla);
+                } else {
+                    gastoTabla.setId(id);
+                    gastoDAO.updateGasto(gastoTabla);
+                }
+                finish();
+
             }
         });
     }
@@ -153,6 +159,19 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        }
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == REQUEST_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+//                Permiso concedido
+                startLocationUpdates();
+            }else {
+//                Permiso denegado
+                Toast.makeText(this, "Permiso de ubicación denegado. No se guardará la ubicación", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
