@@ -1,7 +1,6 @@
 package com.example.aventurapp.models;
 
 
-
 //Esta clase representa la estructura de datos de cada vuelo de la API desplegada.
 // Atributos, Constructor y setters & getters
 public class Vuelo {

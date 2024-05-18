@@ -15,12 +15,12 @@ public abstract class GastoDB extends RoomDatabase {
     public static volatile GastoDB INSTANCE;
 
 
-//    Fragmento utilizado para crear una instancia de una base de datos utilizando la biblioteca Room
-    public static GastoDB getInstance(Context context){
+    //    Fragmento utilizado para crear una instancia de una base de datos utilizando la biblioteca Room
+    public static GastoDB getInstance(Context context) {
 
-        if(INSTANCE==null){
+        if (INSTANCE == null) {
 
-            INSTANCE= Room.databaseBuilder(context, GastoDB.class,"gasto")
+            INSTANCE = Room.databaseBuilder(context, GastoDB.class, "gasto")
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .build();

@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +19,6 @@ import com.example.aventurapp.R;
 import com.example.aventurapp.gastos.GastosActivity;
 import com.example.aventurapp.login.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
-
 
 
 import androidx.core.view.GravityCompat;
@@ -106,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClickLogout(View view) {
-            cerrarSesion(this);
+        cerrarSesion(this);
     }
 
-    public void ClickRefrescar(View view){
+    public void ClickRefrescar(View view) {
         recreate();
     }
 
@@ -143,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
         //mostrar dialog
         builder.create().show();
     }
-
 
 
     public static void redireccionarActivity(Activity activity, Class aClass) {

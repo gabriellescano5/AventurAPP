@@ -57,11 +57,11 @@ public class RegistroActivity extends AppCompatActivity {
                     return;
                 }
                 //                Verifico que el correo tenga el formato correcto de correo electrónico
-                if(!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+                if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
                     Toast.makeText(RegistroActivity.this, "El formato del correo no es válido", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(contrasena.length() < 6){
+                if (contrasena.length() < 6) {
                     Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -73,13 +73,13 @@ public class RegistroActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        if (e instanceof FirebaseAuthUserCollisionException){
+                        if (e instanceof FirebaseAuthUserCollisionException) {
                             Toast.makeText(RegistroActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
 
-                        }  else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                        } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
                             Toast.makeText(RegistroActivity.this, "Las credenciales son inválidas", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(RegistroActivity.this, "Error al registrar el usuario" +e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistroActivity.this, "Error al registrar el usuario" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

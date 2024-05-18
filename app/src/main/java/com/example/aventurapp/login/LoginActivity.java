@@ -76,12 +76,12 @@ public class LoginActivity extends AppCompatActivity {
                 String contrasena = binding.contrasenaLogin.getText().toString().trim();
 
                 //                Verifico si los campos están vacíos
-                if(email.isEmpty() || contrasena.isEmpty()){
+                if (email.isEmpty() || contrasena.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Los campos no pueden estar vacíos", Toast.LENGTH_SHORT).show();
                     return;
                 }
 //                Verifico que el correo tenga el formato correcto de correo electrónico
-                if(!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")){
+                if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+")) {
                     Toast.makeText(LoginActivity.this, "El formato del correo no es válido", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
 //                                Inicio de sesión exitoso
                                     Toast.makeText(LoginActivity.this, "Bienvenido/a", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -97,13 +97,13 @@ public class LoginActivity extends AppCompatActivity {
 //                                    Manejo de errores de inicio de sesión
                                     try {
                                         throw Objects.requireNonNull(task.getException());
-                                    } catch (FirebaseAuthInvalidUserException e){
+                                    } catch (FirebaseAuthInvalidUserException e) {
                                         Toast.makeText(LoginActivity.this, "El correo electrónico no existe", Toast.LENGTH_SHORT).show();
 
-                                    } catch (FirebaseAuthInvalidCredentialsException e){
+                                    } catch (FirebaseAuthInvalidCredentialsException e) {
                                         Toast.makeText(LoginActivity.this, "La contraseña es incorrecta", Toast.LENGTH_SHORT).show();
 
-                                    } catch (Exception e){
+                                    } catch (Exception e) {
                                         Toast.makeText(LoginActivity.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -115,9 +115,9 @@ public class LoginActivity extends AppCompatActivity {
         binding.recuperarClave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = new Intent(LoginActivity.this, RecuperarClaveActivity.class);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(LoginActivity.this, RecuperarClaveActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

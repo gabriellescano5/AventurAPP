@@ -21,15 +21,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RecuperarClaveActivity extends AppCompatActivity {
 
-        Button recuperarClave;
-        EditText correo;
+    Button recuperarClave;
+    EditText correo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_clave);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
-        recuperarClave= findViewById(R.id.btnRecuperacion);
-        correo= findViewById(R.id.emailLogin);
+        recuperarClave = findViewById(R.id.btnRecuperacion);
+        correo = findViewById(R.id.emailLogin);
 
         recuperarClave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,28 +39,29 @@ public class RecuperarClaveActivity extends AppCompatActivity {
             }
         });
     }
-    public void validar(){
-        String email= correo.getText().toString().trim();
-        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+
+    public void validar() {
+        String email = correo.getText().toString().trim();
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             correo.setError("Correo inválido");
             return;
         }
         sendEmail(email);
     }
 
-    public void sendEmail(String email){
-        FirebaseAuth auth= FirebaseAuth.getInstance();
-        String emailAddress= email;
+    public void sendEmail(String email) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String emailAddress = email;
         auth.sendPasswordResetEmail(emailAddress)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(RecuperarClaveActivity.this, "CORREO ENVIADO! REVISA CARPETA SPAM", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RecuperarClaveActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
-                        }else {
+                        } else {
                             Toast.makeText(RecuperarClaveActivity.this, "CORREO INVÁLIDO", Toast.LENGTH_SHORT).show();
                         }
                     }

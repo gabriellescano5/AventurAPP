@@ -93,7 +93,7 @@ public class ConsultasActivity extends AppCompatActivity {
         });
     }
 
-    public void ClickRefrescar(View view){
+    public void ClickRefrescar(View view) {
         finish();
         startActivity(getIntent());
     }
@@ -119,7 +119,6 @@ public class ConsultasActivity extends AppCompatActivity {
     }
 
 
-
     public void ClickDivisas(View view) {
 //Redirecciona activity al panel consultas
         MainActivity.redireccionarActivity(this, DivisasActivity.class);
@@ -131,7 +130,7 @@ public class ConsultasActivity extends AppCompatActivity {
     }
 
     public void ClickLogout(View view) {
-            MainActivity.cerrarSesion(this);
+        MainActivity.cerrarSesion(this);
     }
 
     @Override

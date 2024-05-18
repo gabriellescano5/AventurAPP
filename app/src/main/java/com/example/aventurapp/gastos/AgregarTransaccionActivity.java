@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 
-
 import com.example.aventurapp.databinding.ActivityAgregarTransaccionBinding;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -53,23 +52,23 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
-               if(locationResult == null){
-                   return;
-               }
-               for (Location location : locationResult.getLocations()){
-                   if(location != null){
-                       latitudActual = location.getLatitude();
-                       longitudActual = location.getLongitude();
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    if (location != null) {
+                        latitudActual = location.getLatitude();
+                        longitudActual = location.getLongitude();
 //                       Detiene la actualización de la ubicación si ya no es necesaria
-                       fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-                   }
-               }
+                        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+                    }
+                }
             }
         };
 //        Verifico los permisos y comienzo a solicitar actualizaciones de ubicación
         startLocationUpdates();
 
-            // Para actualizar un dato
+        // Para actualizar un dato
         boolean update = getIntent().getBooleanExtra("update", false);
         Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
         String desc = getIntent().getStringExtra("desc");
@@ -104,7 +103,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 boolean isIngreso = binding.ingresoRadio.isChecked();
 
 //                Verifico que el importe no se ingrese vacío
-                if(importe.isEmpty()){
+                if (importe.isEmpty()) {
                     Toast.makeText(AgregarTransaccionActivity.this, "por favor, ingresa el importe", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -119,23 +118,22 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 GastoDB gastoDB = GastoDB.getInstance(view.getContext());
                 GastoDAO gastoDAO = gastoDB.getDao();
 //DESDE AQUÍ BORRÉ CÓDIGO
-                if(!update){
+                if (!update) {
 //                    Si no es una actualización, maneja la ubicación
-                    if(latitudActual != 0.00 && longitudActual != 0.00){
+                    if (latitudActual != 0.00 && longitudActual != 0.00) {
                         gastoTabla.setLatitud(latitudActual);
                         gastoTabla.setLongitud(longitudActual);
-                    }else{
+                    } else {
 //                        Si no hay permiso o la ubicación no se ha obtenido correctamente,
 //                        Establece valores prederteminados
                         gastoTabla.setLatitud(-1);
                         gastoTabla.setLongitud(-1);
                     }
                     gastoDAO.insertGasto(gastoTabla);
-                }
-                else {
+                } else {
 //                    Si es una actualización, no actualiza la ubicación
                     GastoTabla gastoExistente = gastoDAO.getGastoById(id);
-                    if(gastoExistente != null){
+                    if (gastoExistente != null) {
                         gastoTabla.setLatitud(gastoExistente.getLatitud());
                         gastoTabla.setLongitud(gastoExistente.getLongitud());
                     }
@@ -148,7 +146,7 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
     }
 
     private void startLocationUpdates() {
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             LocationRequest locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setInterval(10000);
@@ -163,11 +161,11 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
 
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_CODE){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if (requestCode == REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 //                Permiso concedido
                 startLocationUpdates();
-            }else {
+            } else {
 //                Permiso denegado
                 Toast.makeText(this, "Permiso de ubicación denegado. No se guardará la ubicación", Toast.LENGTH_SHORT).show();
             }

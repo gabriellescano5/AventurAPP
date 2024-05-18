@@ -195,10 +195,11 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
         });
     } //------------------------------------ FIN ONCREATE
 
-    public void ClickRefrescar(View view){
+    public void ClickRefrescar(View view) {
         finish();
         startActivity(getIntent());
     }
+
     public void ClickMenu(View view) {
         //abrir barra
         MainActivity.abrirBarra(drawerLayout);
@@ -230,7 +231,7 @@ public class DivisasActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void ClickLogout(View view) {
-            MainActivity.cerrarSesion(this);
+        MainActivity.cerrarSesion(this);
     }
 
     @Override
