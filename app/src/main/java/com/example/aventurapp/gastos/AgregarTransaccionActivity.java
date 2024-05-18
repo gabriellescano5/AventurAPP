@@ -108,42 +108,41 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                     Toast.makeText(AgregarTransaccionActivity.this, "por favor, ingresa el importe", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                GastoTabla gastoTabla = new GastoTabla();
 
+                GastoTabla gastoTabla = new GastoTabla();
                 gastoTabla.setImporte(Long.parseLong(importe));
                 gastoTabla.setDescripcion(desc);
                 gastoTabla.setIngreso(isIngreso);
                 gastoTabla.setTipoPago(tipo);
 
-                if(ActivityCompat.checkSelfPermission(AgregarTransaccionActivity.this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-//                    Si no hay permiso, establece valores predeterminados
-                    gastoTabla.setLatitud(-1);
-                    gastoTabla.setLongitud(-1);
-
-                } else {
-                    //Me aseguro de que la latitud y la longitud no sean 0.00, lo que podría indicar que
-                    //  la ubicación no se ha obtenido correctamente
-                    if (latitudActual != 0.00 && longitudActual != 0.00) {
-                        gastoTabla.setLatitud((latitudActual));
-                        gastoTabla.setLongitud(longitudActual);
-
-                    } else {
-                        Toast.makeText(AgregarTransaccionActivity.this, "Error al obtener la ubicación", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
 
                 GastoDB gastoDB = GastoDB.getInstance(view.getContext());
                 GastoDAO gastoDAO = gastoDB.getDao();
-
-                if (!update) {
+//DESDE AQUÍ BORRÉ CÓDIGO
+                if(!update){
+//                    Si no es una actualización, maneja la ubicación
+                    if(latitudActual != 0.00 && longitudActual != 0.00){
+                        gastoTabla.setLatitud(latitudActual);
+                        gastoTabla.setLongitud(longitudActual);
+                    }else{
+//                        Si no hay permiso o la ubicación no se ha obtenido correctamente,
+//                        Establece valores prederteminados
+                        gastoTabla.setLatitud(-1);
+                        gastoTabla.setLongitud(-1);
+                    }
                     gastoDAO.insertGasto(gastoTabla);
-                } else {
+                }
+                else {
+//                    Si es una actualización, no actualiza la ubicación
+                    GastoTabla gastoExistente = gastoDAO.getGastoById(id);
+                    if(gastoExistente != null){
+                        gastoTabla.setLatitud(gastoExistente.getLatitud());
+                        gastoTabla.setLongitud(gastoExistente.getLongitud());
+                    }
                     gastoTabla.setId(id);
                     gastoDAO.updateGasto(gastoTabla);
                 }
                 finish();
-
             }
         });
     }

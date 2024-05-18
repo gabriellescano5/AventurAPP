@@ -22,4 +22,7 @@ public interface GastoDAO {
 
     @Query("SELECT * FROM gasto")
     List<GastoTabla> getAll();
+
+    @Query("SELECT * FROM gasto WHERE id = :gastoId")
+    GastoTabla getGastoById(int gastoId);
 }
