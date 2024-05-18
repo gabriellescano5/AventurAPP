@@ -49,9 +49,6 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         //Inicializando el cliente de ubicación
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-       locationRequest = LocationRequest.create();
-       locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-       locationRequest.setInterval(10000); // 10 segundos de intervalo
 
         locationCallback = new LocationCallback() {
             @Override
@@ -106,6 +103,13 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 String desc = binding.descripcion.getText().toString();
                 boolean isIngreso = binding.ingresoRadio.isChecked();
 
+//                Verifico que el importe no se ingrese vacío
+                if(importe.isEmpty()){
+                    Toast.makeText(AgregarTransaccionActivity.this, "por favor, ingresa el importe", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 //Me aseguro de que la latitud y la longitud no sean 0.00, lo que podría indicar que
                 //  la ubicación no se ha obtenido correctamente
                 if (latitudActual != 0.00 && longitudActual != 0.00) {
@@ -140,6 +144,12 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
 
     private void startLocationUpdates() {
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            LocationRequest locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            locationRequest.setInterval(10000);
+            locationRequest.setFastestInterval(5000);
+
+
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
