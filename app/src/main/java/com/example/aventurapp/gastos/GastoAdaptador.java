@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aventurapp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 //Adaptador para mostrar los datos en el Recycler View
@@ -51,6 +53,8 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
         holder.descripcion.setText(gastoTabla.getDescripcion());
         holder.latitud.setText(String.valueOf(gastoTabla.getLatitud()));
         holder.longitud.setText(String.valueOf(gastoTabla.getLongitud()));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        holder.fecha.setText(sdf.format(gastoTabla.getFecha()));
 
 
         if (gastoTabla.isIngreso()) {
@@ -104,7 +108,7 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView estado, titulo, descripcion, importe, latitud, longitud;
+        TextView estado, titulo, descripcion, importe, latitud, longitud, fecha;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,6 +118,7 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
             importe = itemView.findViewById(R.id.importe);
             latitud = itemView.findViewById(R.id.latitud);
             longitud = itemView.findViewById(R.id.longitud);
+            fecha = itemView.findViewById(R.id.FechaDato);
         }
     }
 }

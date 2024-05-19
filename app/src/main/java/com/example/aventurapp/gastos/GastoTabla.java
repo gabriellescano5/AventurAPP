@@ -3,6 +3,8 @@ package com.example.aventurapp.gastos;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 
 //Clase Gasto con sus atributos, constructores, setters y getters y con el nombre de tabla definida y su
 //clave primaria
@@ -17,11 +19,13 @@ public class GastoTabla {
     private boolean ingreso;
     private double latitud;
     private double longitud;
+    private Date fecha;
+
 
     public GastoTabla() {
     }
 
-    public GastoTabla(int id, String tipoPago, long importe, String descripcion, boolean ingreso, double latitud, double longitud) {
+    public GastoTabla(int id, String tipoPago, long importe, String descripcion, boolean ingreso, double latitud, double longitud, Date fecha) {
         this.id = id;
         this.tipoPago = tipoPago;
         this.importe = importe;
@@ -29,6 +33,7 @@ public class GastoTabla {
         this.ingreso = ingreso;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.fecha = fecha;
     }
 
     public int getId() {
@@ -86,4 +91,13 @@ public class GastoTabla {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }
+

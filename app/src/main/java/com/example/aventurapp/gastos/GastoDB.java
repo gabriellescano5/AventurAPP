@@ -6,8 +6,10 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 @Database(entities = {GastoTabla.class}, version = 1)
+@TypeConverters({ConvertidoresFecha.class})
 public abstract class GastoDB extends RoomDatabase {
 
     public abstract GastoDAO getDao();

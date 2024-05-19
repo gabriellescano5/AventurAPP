@@ -27,6 +27,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
+import java.util.Date;
+
 
 public class AgregarTransaccionActivity extends AppCompatActivity {
 
@@ -113,11 +115,12 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
                 gastoTabla.setDescripcion(desc);
                 gastoTabla.setIngreso(isIngreso);
                 gastoTabla.setTipoPago(tipo);
+                gastoTabla.setFecha(new Date()); //Asigna la fecha actual
 
 
                 GastoDB gastoDB = GastoDB.getInstance(view.getContext());
                 GastoDAO gastoDAO = gastoDB.getDao();
-//DESDE AQUÍ BORRÉ CÓDIGO
+
                 if (!update) {
 //                    Si no es una actualización, maneja la ubicación
                     if (latitudActual != 0.00 && longitudActual != 0.00) {
