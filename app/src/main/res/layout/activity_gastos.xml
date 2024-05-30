@@ -224,7 +224,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/itemsRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"/>
+                        android:layout_height="match_parent"/>
 
                 </androidx.core.widget.NestedScrollView>
 

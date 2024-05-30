@@ -1,5 +1,6 @@
 package com.example.aventurapp.estadisticas;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -46,13 +47,16 @@ public class EstadisticasActivity extends AppCompatActivity {
 
     }
         private void setupPieChart(){
+        int colorRojo= Color.parseColor("#B80000");
+        int colorVerde= Color.parseColor("#0E8F1F");
+        int colorAzul= Color.parseColor("#1e6091");
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(gasto,"Gastos"));
         entries.add(new PieEntry(ingreso,"Ingresos"));
         entries.add(new PieEntry(balance,"Balance"));
 
         PieDataSet dataSet = new PieDataSet(entries,"Estadísticas");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(colorRojo, colorVerde, colorAzul);
         dataSet.setValueTextSize(14f);
 
         PieData data = new PieData(dataSet);
