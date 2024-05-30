@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -29,6 +32,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
 
     GastoAdaptador gastoAdaptador;
 
+    private static final  int REQUEST_IMAGE_CAPTURE= 1;
     GastoDB gastoDB;
 
     GastoDAO gastoDAO;
@@ -65,8 +69,25 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
                 startActivity(intent);
             }
         });
+        binding.abrirCamarabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+            }
+        });
+
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
+
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+        }
+    }
 
     //    Función para hacer los cálculos al ingresar un gasto o ingreso y que muestre el balance
     @Override
