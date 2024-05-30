@@ -13,14 +13,21 @@
         android:orientation="vertical">
 
         <include layout="@layout/main_toolbar" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="35sp"
+            android:text="@string/Estadisticas"
+            android:textSize="28sp" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:background="@color/yellowish"
         android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"/>
+        android:layout_gravity="center"/>
     </LinearLayout>
 
     <RelativeLayout
