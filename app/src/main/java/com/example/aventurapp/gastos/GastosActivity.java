@@ -43,6 +43,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
 
     long gasto = 0, ingreso = 0;
     long balance = 0;
+    private Bitmap imageBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            imageBitmap = (Bitmap) extras.get("data");
 
         }
     }
