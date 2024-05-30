@@ -213,7 +213,16 @@
                         android:textColor="@color/white"
                         android:backgroundTint="@color/white"
                         android:id="@+id/verEstadisticasbtn"
-                        android:layout_marginStart="260dp"
+                        android:layout_marginStart="240dp"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" />
+                    <ImageButton
+                        android:text="@string/Camara"
+                        android:src="@drawable/camera"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/white"
+                        android:id="@+id/abrirCamarabtn"
+                        android:layout_marginStart="290dp"
                         android:layout_width="48dp"
                         android:layout_height="48dp" />
 
