@@ -67,7 +67,7 @@
     <string name="ANADIR">AÑADIR</string>
     <string name="ARS">ARS</string>
     <string name="ingresatumonto">ingresa tu monto</string>
-    <string name="efectivotransferencia">EFECTIVO O TRANSFERENCIA</string>
+    <string name="efectivotransferencia">EFECTIVO O TARJETA</string>
     <string name="ingreso">Ingreso</string>
     <string name="gasto">Gasto</string>
     <string name="AGREGAR">AGREGAR</string>
