@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aventurapp.R;
 import com.example.aventurapp.adapter.VueloAdapter;
 import com.example.aventurapp.divisas.DivisasActivity;
+import com.example.aventurapp.estadisticas.EstadisticasActivity;
 import com.example.aventurapp.gastos.GastosActivity;
 import com.example.aventurapp.menu.MainActivity;
 import com.example.aventurapp.models.Vuelo;
@@ -51,10 +52,16 @@ public class ConsultasActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
         //Asignación a la variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
+
 //        Enlazo el recycler view con el componente id del activity_consultas.xml
         recyclerView = findViewById(R.id.rv_vuelos);
+
+
 //        creo un objeto tipo lista
         vueloList = new ArrayList<>();
+
+
 //        Aquí alineo los elementos que se agregarán en el recycler view, en este caso
 //        en forma de lista
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -135,6 +142,7 @@ public class ConsultasActivity extends AppCompatActivity {
         //recrea actividad
         recreate();
     }
+
 
     public void ClickLogout(View view) {
         MainActivity.cerrarSesion(this);

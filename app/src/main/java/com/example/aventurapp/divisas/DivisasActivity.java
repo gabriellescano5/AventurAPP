@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.aventurapp.consultas.ConsultasActivity;
 import com.example.aventurapp.R;
+import com.example.aventurapp.estadisticas.EstadisticasActivity;
 import com.example.aventurapp.gastos.GastosActivity;
 import com.example.aventurapp.menu.MainActivity;
 import com.google.gson.annotations.SerializedName;

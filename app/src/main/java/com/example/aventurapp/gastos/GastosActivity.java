@@ -17,6 +17,7 @@ import com.example.aventurapp.R;
 import com.example.aventurapp.consultas.ConsultasActivity;
 import com.example.aventurapp.databinding.ActivityGastosBinding;
 import com.example.aventurapp.divisas.DivisasActivity;
+import com.example.aventurapp.estadisticas.EstadisticasActivity;
 import com.example.aventurapp.menu.MainActivity;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
     GastoDAO gastoDAO;
 
     long gasto = 0, ingreso = 0;
-
+    long balance = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,18 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(GastosActivity.this, AgregarTransaccionActivity.class));
+
+
+            }
+        });
+        binding.verEstadisticasbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BalanceData balanceData = new BalanceData(ingreso, gasto, balance);
+
+                Intent intent = new Intent(GastosActivity.this, EstadisticasActivity.class);
+                intent.putExtra("balanceData", balanceData);
+                startActivity(intent);
             }
         });
     }
@@ -67,6 +80,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
 
         ingreso = 0;
         gasto = 0;
+        balance = 0;
 
         List<GastoTabla> gastoTablas = gastoDAO.getAll();
 
@@ -80,9 +94,11 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         }
         binding.totalGasto.setText(gasto + "");
         binding.totalIngreso.setText(ingreso + "");
-        long balance = ingreso - gasto;
+        balance = ingreso - gasto;
         binding.totalImporte.setText(balance + "");
     }
+
+
 
     //        Método para refrescar los datos en GastosActivity
     public void ClickRefrescar(View view) {
@@ -119,6 +135,7 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         //Redirecciona activity al panel consultas
         MainActivity.redireccionarActivity(this, ConsultasActivity.class);
     }
+
 
     public void ClickLogout(View view) {
         //Cerrar app

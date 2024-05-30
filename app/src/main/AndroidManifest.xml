@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".estadisticas.EstadisticasActivity"
+            android:exported="true" />
+        <activity
             android:name=".login.RecuperarClaveActivity"
             android:exported="false" />
         <activity
@@ -25,7 +29,7 @@
             android:exported="true" />
         <activity
             android:name=".login.RegistroActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
@@ -34,7 +38,7 @@
             android:exported="true" />
         <activity
             android:name=".divisas.DivisasActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".gastos.GastosActivity"
             android:exported="true" />
