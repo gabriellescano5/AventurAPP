@@ -207,18 +207,20 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <Button
+                    <ImageButton
                         android:text="Estadistica"
+                        android:src="@drawable/ic_chart"
                         android:textColor="@color/white"
-                        android:backgroundTint="@color/purple_500"
+                        android:backgroundTint="@color/white"
                         android:id="@+id/verEstadisticasbtn"
                         android:layout_marginStart="320dp"
                         android:layout_width="48dp"
-                        android:layout_height="48dp"/>
+                        android:layout_height="48dp"
+                        />
                 </RelativeLayout>
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="220dp">
+                    android:layout_height="230dp">
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/itemsRecycler"
                         android:layout_width="match_parent"
@@ -232,7 +234,7 @@
             android:layout_gravity="end"
             android:id="@+id/new_btn"
             android:backgroundTint="@color/btn_color"
-            android:layout_margin="10dp"
+            android:layout_margin="35dp"
             android:layout_width="55dp"
             app:cardCornerRadius="35dp"
             android:layout_height="55dp">
