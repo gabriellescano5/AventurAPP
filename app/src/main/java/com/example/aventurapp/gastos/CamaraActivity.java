@@ -1,6 +1,7 @@
 package com.example.aventurapp.gastos;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,19 +16,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 
 import com.example.aventurapp.R;
 
 import java.io.File;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 
 public class CamaraActivity extends AppCompatActivity {
@@ -65,7 +65,7 @@ public class CamaraActivity extends AppCompatActivity {
         }
     }
 
-    public void onRequestPermissionsResult(int requestCoded, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCoded, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCoded, permissions, grantResults);
         if(grantResults.length> 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             abrirCamara();
@@ -74,6 +74,7 @@ public class CamaraActivity extends AppCompatActivity {
             Toast.makeText(this, "Permiso de cámara denegado", Toast.LENGTH_SHORT).show();
         }
     }
+    @SuppressLint("QueryPermissionsNeeded")
     private void abrirCamara(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if(intent.resolveActivity(getPackageManager())!=null){
