@@ -77,37 +77,11 @@ public class GastosActivity extends AppCompatActivity implements ClickEvent {
         binding.abrirCamarabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               ManejoPermisoCamara();
+                Intent intent = new Intent(GastosActivity.this, CamaraActivity.class);
+                startActivity(intent);
             }
         });
 
-    }
-
-    private void ManejoPermisoCamara() {
-        int ManejoPermisoCamara = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
-        if(ManejoPermisoCamara != PackageManager.PERMISSION_GRANTED){
-            //No se tiene permiso para la cámara, solicito al usuario
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
-        } else {
-            //Tengo permiso para usar la cámara
-            abrirCamara();
-        }
-    }
-
-    private void abrirCamara() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent,REQUEST_IMAGE_CAPTURE);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            imageBitmap = (Bitmap) extras.get("data");
-
-        }
     }
 
     //    Función para hacer los cálculos al ingresar un gasto o ingreso y que muestre el balance

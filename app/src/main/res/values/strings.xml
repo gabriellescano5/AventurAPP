@@ -78,7 +78,7 @@
     <string name="Longitud">Longitud:</string>
     <string name="Fecha">19/05/2024</string>
     <string name="Estadisticas">Estadísticas</string>
-    <string name="Camara">Cámara</string>
+    <string name="Camara">Abrir Cámara</string>
 
 
 </resources>
