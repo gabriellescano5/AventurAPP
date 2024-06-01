@@ -1,6 +1,7 @@
 package com.example.aventurapp.gastos;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -25,4 +26,7 @@ public interface GastoDAO {
 
     @Query("SELECT * FROM gasto WHERE id = :gastoId")
     GastoTabla getGastoById(int gastoId);
+
+    @Query("SELECT id, latitud, longitud, importe, ingreso FROM gasto WHERE id = :gastoId")
+    LiveData<GastoTabla> obtenerCoordenadasPorId(int gastoId);
 }

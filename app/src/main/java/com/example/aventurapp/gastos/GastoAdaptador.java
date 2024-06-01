@@ -2,12 +2,15 @@ package com.example.aventurapp.gastos;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aventurapp.R;
@@ -51,8 +54,7 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
         holder.titulo.setText(gastoTabla.getTipoPago());
         holder.importe.setText(String.valueOf(gastoTabla.getImporte()));
         holder.descripcion.setText(gastoTabla.getDescripcion());
-        holder.latitud.setText(String.valueOf(gastoTabla.getLatitud()));
-        holder.longitud.setText(String.valueOf(gastoTabla.getLongitud()));
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         holder.fecha.setText(sdf.format(gastoTabla.getFecha()));
 
@@ -73,6 +75,28 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
             public boolean onLongClick(View view) {
                 clickEvent.OnLongPress(position);
                 return true;
+            }
+        });
+        holder.ubicacion.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                int gastoId = gastoTablaList.get(position).getId();
+                GastoDAO gastoDAO = GastoDB.getInstance(context).getDao();
+
+                gastoDAO.obtenerCoordenadasPorId(gastoId).observe((LifecycleOwner) context, GastoDB->{
+                    if (GastoDB != null){
+
+                        double latitud = GastoDB.getLatitud();
+                        double longitud = GastoDB.getLongitud();
+
+                        String urlGoogleMaps = "https://www.google.com/maps/search/?api=1&query=" + latitud +","+longitud;
+
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlGoogleMaps));
+                        context.startActivity(intent);
+                    }
+                });
             }
         });
     }
@@ -108,7 +132,7 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView estado, titulo, descripcion, importe, latitud, longitud, fecha;
+        TextView estado, titulo, descripcion, importe, fecha, ubicacion;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,9 +140,9 @@ public class GastoAdaptador extends RecyclerView.Adapter<GastoAdaptador.MyViewHo
             titulo = itemView.findViewById(R.id.titulo);
             descripcion = itemView.findViewById(R.id.descripcion);
             importe = itemView.findViewById(R.id.importe);
-            latitud = itemView.findViewById(R.id.latitud);
-            longitud = itemView.findViewById(R.id.longitud);
+
             fecha = itemView.findViewById(R.id.FechaDato);
+            ubicacion = itemView.findViewById(R.id.abrirMapa);
         }
     }
 }
