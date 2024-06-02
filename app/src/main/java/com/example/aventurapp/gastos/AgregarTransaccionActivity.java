@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
 
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 
+import com.example.aventurapp.R;
 import com.example.aventurapp.databinding.ActivityAgregarTransaccionBinding;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,14 +44,29 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
     private double longitudActual;
     private LocationCallback locationCallback;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAgregarTransaccionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED); //bloquear rotación
+        Spinner spinner = findViewById(R.id.descripcion);
+        Spinner spinner1 = findViewById(R.id.tipoPago);
+
+//       Defino los valores para el Spinner de Categoría (Ya con el array creado en string.xml)
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.categoria, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
         //Inicializando el cliente de ubicación
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+//        Defino los valores para el Spinner de Tipo de Pago (Ya con el array creado en string.xml)
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.tipoPago, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter1);
 
 
         locationCallback = new LocationCallback() {
@@ -84,8 +102,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
         if (update) {
             binding.agregarTexto.setText("ACTUALIZAR");
             binding.importe.setText(importe + "");
-            binding.tipoPago.setText(tpago);
-            binding.descripcion.setText(desc);
+            String pagoSeleccionada = spinner1.getSelectedItem().toString();
+            String descSeleccionada = spinner.getSelectedItem().toString();
 
             if (isIngreso) {
                 binding.ingresoRadio.setChecked(true);
@@ -100,8 +118,8 @@ public class AgregarTransaccionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String importe = binding.importe.getText().toString();
-                String tipo = binding.tipoPago.getText().toString();
-                String desc = binding.descripcion.getText().toString();
+                String tipo = spinner1.getSelectedItem().toString();
+                String desc = spinner.getSelectedItem().toString();
                 boolean isIngreso = binding.ingresoRadio.isChecked();
 
 //                Verifico que el importe no se ingrese vacío

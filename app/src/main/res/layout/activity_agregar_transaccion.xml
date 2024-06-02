@@ -103,23 +103,23 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <EditText
+                <Spinner
+                    android:backgroundTint="@color/verdeNilo"
+                    android:background="@drawable/spinner_border"
+                    android:padding="10dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/tipoPago"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/stroke"
-                    android:hint="@string/efectivotransferencia"
-                    android:padding="10dp" />
+                    android:layout_height="60dp"/>
 
-                <EditText
+                <Spinner
+                    android:backgroundTint="@color/azulNuma"
+                    android:background="@drawable/spinner_border"
+                    android:padding="10dp"
+                    android:layout_marginTop="5dp"
                     android:id="@+id/descripcion"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/stroke"
-                    android:hint="@string/descripcion"
-                    android:padding="10dp" />
+                    android:layout_height="60dp"/>
 
                 <RadioGroup
 
@@ -128,12 +128,14 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
+                        android:textStyle="bold"
                         android:id="@+id/ingresoRadio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ingreso" />
 
                     <RadioButton
+                        android:textStyle="bold"
                         android:id="@+id/gastoRadio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

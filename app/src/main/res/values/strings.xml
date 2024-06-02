@@ -80,5 +80,26 @@
     <string name="Estadisticas">Estadísticas</string>
     <string name="Camara">Abrir Cámara</string>
 
+    <string-array name="categoria">
+        <item>-Selecciona Categoría-</item>
+        <item>Alojamiento</item>
+        <item>Alimentación</item>
+        <item>Compras</item>
+        <item>Entretenimiento</item>
+        <item>Vehículo</item>
+        <item>Transporte</item>
+        <item>Salud</item>
+        <item>Restaurantes</item>
+        <item>Familia</item>
+        <item>Combustible</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="tipoPago">
+        <item>-Selecciona Tipo de Pago-</item>
+        <item>Efectivo</item>
+        <item>Tarjeta Débito</item>
+        <item>Tarjeta Crédito</item>
+    </string-array>
 
 </resources>

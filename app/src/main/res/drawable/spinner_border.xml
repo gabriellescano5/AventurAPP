@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    android:shape="rectangle">
+    <solid android:color="#ffffff" /> <!-- Color de fondo -->
+    <stroke android:width="2dp" android:color="#000000" /> <!-- Borde -->
+    <corners android:radius="20dp" /> <!-- Radio de las esquinas -->
+</shape>
