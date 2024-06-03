@@ -22,7 +22,7 @@ LINK PARA DESCARGAR CÓDIGO API RESTful en ASP.NET CORE
 LINK PARA DESCARGAR REQUERIMIENTOS | DISEÑO BD E INTERFACES | DOCUMENTACIÓN FINAL
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 - [Google Drive](https://drive.google.com/file/d/1zz2s61hXvC-boxgEHYNr9vwvK0GveAU5/view?usp=drive_link) (REQUERIMIENTOS Y CASO DE USO)
-- [Google Drive](https://drive.google.com/file/d/1kbWyX998cUDhEivsB-Yydx2bwr5eyDKB/view?usp=drive_link) (DISEÑO BD E INTERFACES)
+- [Google Drive](https://drive.google.com/file/d/1a3_sJDTpppEK56Jdv72_mNWtsE8nf9NU/view?usp=drive_link) (DISEÑO BD E INTERFACES)
 - [Google Drive](https://drive.google.com/file/d/1zUuMHFb0VZFvfpblvmMxB9qLAkhXQafz/view?usp=drive_link) (DOCUMENTACIÓN FINAL)
 
 CUENTA FIREBASE Y SOMEE.COM
